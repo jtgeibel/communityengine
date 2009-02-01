@@ -7,7 +7,7 @@
         %h2= link_to user.login, user_path(user)
       
         %ul
-          - if user.metro_area        
+          - if user.neighborhood
             %li.geo= :from2.l + " #{user.location}<br/>" 
           %li.update
             %abbr.published{:title=>"#{user.created_at}"}

@@ -4,16 +4,16 @@
     %label= :user_login.l+":"
     = text_field_tag 'login', @search['login']
     %p
-      = render :partial => 'shared/location_chooser', :locals => {:selected_country => @search['country_id'].to_i, :selected_state => @search['state_id'].to_i, :selected_metro_area => @search['metro_area_id'].to_i, :states => @states, :metro_areas => @metro_areas}
+      = render :partial => 'shared/location_chooser', :locals => {:selected_county => @search['county_id'].to_i, :selected_neighborhood => @search['neighborhood_id'].to_i, :neighborhoods => @neighborhoods}
 
     %p 
       %input{"type"=>"submit", "value"=>:search_users.l}
 
 
 .box.alt
-  %h3= :metro_areas.l
-  - city_cloud @metro_areas_for_cloud, %w(nube1 nube2 nube3 nube4 nube5) do |city, css_class|
-    = link_to city.name, users_path(:metro_area_id => city.id), :class => css_class
+  %h3= "Neighborhoods"
+  - city_cloud @neighborhoods_for_cloud, %w(nube1 nube2 nube3 nube4 nube5) do |city, css_class|
+    = link_to city.name, users_path(:neighborhood_id => city.id), :class => css_class
 
 - if current_user
   .box.alt

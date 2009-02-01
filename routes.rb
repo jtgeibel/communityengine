@@ -84,7 +84,7 @@ resources :events
 resources :favorites, :path_prefix => '/:favoritable_type/:favoritable_id'
 resources :comments, :path_prefix => '/:commentable_type/:commentable_id'
 resources :homepage_features
-resources :metro_areas
+#resources :metro_areas
 resources :ads
 resources :contests, :collection => { :current => :get }
 resources :activities
