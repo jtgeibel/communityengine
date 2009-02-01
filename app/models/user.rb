@@ -38,12 +38,12 @@ class User < ActiveRecord::Base
   after_create  :deliver_signup_notification
   after_save    :deliver_activation
   before_save   :generate_login_slug
-  after_save    :recount_metro_area_users
-  after_destroy :recount_metro_area_users
+  after_save    :recount_neighborhood_users
+  after_destroy :recount_neighborhood_users
 
 
   #validation
-  validates_presence_of     :metro_area, :if => Proc.new { |user| user.state }
+  validates_presence_of     :neighborhood,	:if => Proc.new { |user| user.county }
   validates_uniqueness_of   :login_slug
   validates_exclusion_of    :login, :in => AppConfig.reserved_logins
   validates_date :birthday, :before => 13.years.ago.to_date  
@@ -74,9 +74,8 @@ class User < ActiveRecord::Base
     has_many :monitored_topics, :through => :monitorships, :conditions => ['monitorships.active = ?', true], :order => 'topics.replied_at desc', :source => :topic
 
     belongs_to  :avatar, :class_name => "Photo", :foreign_key => "avatar_id"
-    belongs_to  :metro_area, :counter_cache => true
-    belongs_to  :state
-    belongs_to  :country
+    belongs_to  :neighborhood, :counter_cache => true
+    belongs_to  :county
     has_many    :comments_as_author, :class_name => "Comment", :foreign_key => "user_id", :order => "created_at desc", :dependent => :destroy
     has_many    :comments_as_recipient, :class_name => "Comment", :foreign_key => "recipient_id", :order => "created_at desc", :dependent => :destroy
     has_many    :clippings, :order => "created_at desc", :dependent => :destroy
@@ -103,33 +102,24 @@ class User < ActiveRecord::Base
     end
   end
   
-  def self.find_country_and_state_from_search_params(search)
-    country     = Country.find(search['country_id']) if !search['country_id'].blank?
-    state       = State.find(search['state_id']) if !search['state_id'].blank?
-    metro_area  = MetroArea.find(search['metro_area_id']) if !search['metro_area_id'].blank?
+  def self.find_county_from_search_params(search)
+    county     = County.find(search['county_id']) if !search['county_id'].blank?
+    neighborhood  = Neighborhood.find(search['neighborhood_id']) if !search['neighborhood_id'].blank?
 
-    if metro_area && metro_area.country
-      country ||= metro_area.country 
-      state   ||= metro_area.state
-      search['country_id'] = metro_area.country.id if metro_area.country
-      search['state_id'] = metro_area.state.id if metro_area.state      
+    if neighborhood && neighborhood.county
+      county ||= neighborhood.county 
+      search['county_id'] = neighborhood.county.id if neighborhood.county
     end
     
-    states  = country ? country.states.sort_by{|s| s.name} : []
-    if states.any?
-      metro_areas = state ? state.metro_areas.all(:order => "name") : []
-    else
-      metro_areas = country ? country.metro_areas : []
-    end    
+    neighborhoods = county ? county.neighborhoods : []
     
-    return [metro_areas, states]
+    return neighborhoods
   end
 
   def self.prepare_params_for_search(params)
     search = {}.merge(params)
-    search['metro_area_id'] = params[:metro_area_id] || nil
-    search['state_id'] = params[:state_id] || nil
-    search['country_id'] = params[:country_id] || nil
+    search['neighborhood_id'] = params[:neighborhood_id] || nil
+    search['county_id'] = params[:county_id] || nil
     search['skill_id'] = params[:skill_id] || nil    
     search
   end
@@ -138,14 +128,11 @@ class User < ActiveRecord::Base
     cond = Caboose::EZ::Condition.new
 
     cond.append ['activated_at IS NOT NULL ']
-    if search['country_id'] && !(search['metro_area_id'] || search['state_id'])
-      cond.append ['country_id = ?', search['country_id'].to_s]
+    if search['county_id'] && !search['neighborhood_id']
+      cond.append ['county_id = ?', search['county_id'].to_s]
     end
-    if search['state_id'] && !search['metro_area_id']
-      cond.append ['state_id = ?', search['state_id'].to_s]
-    end
-    if search['metro_area_id']
-      cond.append ['metro_area_id = ?', search['metro_area_id'].to_s]
+    if search['neighborhood_id']
+      cond.append ['neighborhood_id = ?', search['neighborhood_id'].to_s]
     end
     if search['login']    
       cond.login =~ "%#{search['login']}%"
@@ -180,10 +167,10 @@ class User < ActiveRecord::Base
   def self.paginated_users_conditions_with_search(params)
     search = prepare_params_for_search(params)
 
-    metro_areas, states = find_country_and_state_from_search_params(search)
+    neighborhoods = find_county_from_search_params(search)
     
     cond = build_conditions_for_search(search)
-    return cond, search, metro_areas, states
+    return cond, search, neighborhoods
   end  
 
   
@@ -228,10 +215,10 @@ class User < ActiveRecord::Base
     super
   end
 
-  def recount_metro_area_users
-    return unless self.metro_area
-    ma = self.metro_area
-    ma.users_count = User.count(:conditions => ["metro_area_id = ?", ma.id])
+  def recount_neighborhood_users
+    return unless self.neighborhood
+    ma = self.neighborhood
+    ma.users_count = User.count(:conditions => ["neighborhood_id = ?", ma.id])
     ma.save
   end  
   
@@ -288,12 +275,12 @@ class User < ActiveRecord::Base
   end
   
   def location
-    metro_area && metro_area.name || ""
+    neighborhood && neighborhood.name || ""
   end
   
-  def full_location
-    "#{metro_area.name if self.metro_area}#{" , #{self.country.name}" if self.country}"
-  end
+#  def full_location
+#    "#{neighborhood.name if self.neighborhood}#{" , #{self.county.name}" if self.county}"
+#  end
   
   def reset_password
      new_password = newpass(8)

@@ -57,7 +57,7 @@ class UsersController < BaseController
   end
 
   def index
-    cond, @search, @metro_areas, @states = User.paginated_users_conditions_with_search(params)    
+    cond, @search, @neighborhoods = User.paginated_users_conditions_with_search(params)    
     
     @users = User.recent.find(:all,
       :conditions => cond.to_sql, 
@@ -67,7 +67,7 @@ class UsersController < BaseController
     
     @tags = User.tag_counts :limit => 10
     
-    setup_metro_areas_for_cloud
+    setup_neighborhoods_for_cloud
     
      respond_to do |format|
         format.html # index.html.erb
@@ -123,7 +123,7 @@ class UsersController < BaseController
   end
     
   def edit 
-    @metro_areas, @states = setup_locations_for(@user)
+    @neighborhoods        = setup_locations_for(@user)
     @skills               = Skill.find(:all)
     @offering             = Offering.new
     @avatar               = Photo.new
@@ -131,14 +131,13 @@ class UsersController < BaseController
   
   def update
     @user.attributes      = params[:user]
-    @metro_areas, @states = setup_locations_for(@user)
+    @neighborhoods = setup_locations_for(@user)
 
-    unless params[:metro_area_id].blank?
-      @user.metro_area  = MetroArea.find(params[:metro_area_id])
-      @user.state       = (@user.metro_area && @user.metro_area.state) ? @user.metro_area.state : nil
-      @user.country     = @user.metro_area.country if (@user.metro_area && @user.metro_area.country)
+    unless params[:neighborhood_id].blank?
+      @user.neighborhood  = Neighborhood.find(params[:neighborhood_id])
+      @user.county     = @user.neighborhood.county if (@user.neighborhood && @user.neighborhood.county)
     else
-      @user.metro_area = @user.state = @user.country = nil
+      @user.neighborhood = nil
     end
   
     @avatar       = Photo.new(params[:avatar])
@@ -187,7 +186,7 @@ class UsersController < BaseController
       redirect_to user_photo_path(@user, @photo)
     end
   rescue ActiveRecord::RecordInvalid
-    @metro_areas, @states = setup_locations_for(@user)
+    @neighborhoods= setup_locations_for(@user)
     render :action => 'edit'
   end
   
@@ -305,7 +304,7 @@ class UsersController < BaseController
 
   def welcome_about
     @user = User.find(params[:id])
-    @metro_areas, @states = setup_locations_for(@user)
+    @neighborhoods = setup_locations_for(@user)
   end
     
   def welcome_invite
@@ -360,29 +359,9 @@ class UsersController < BaseController
     return_to_admin
   end
 
-  def metro_area_update
-  
-    country = Country.find(params[:country_id]) unless params[:country_id].blank?
-    state   = State.find(params[:state_id]) unless params[:state_id].blank?
-    states  = country ? country.states.sort_by{|s| s.name} : []
-    
-    if states.any?
-      metro_areas = state ? state.metro_areas.all(:order => "name") : []
-    else
-      metro_areas = country ? country.metro_areas : []
-    end
-
-    respond_to do |format|
-      format.js {
-        render :partial => 'shared/location_chooser', :locals => {
-          :states => states, 
-          :metro_areas => metro_areas, 
-          :selected_country => params[:country_id].to_i, 
-          :selected_state => params[:state_id].to_i, 
-          :selected_metro_area => nil }        
-      }
-    end
-  end
+# I moved this functionality to the new neighborhood model.  I probably shouldn't be on the user controller anyway.
+#  def metro_area_update
+#  end
   
   def toggle_featured
     @user = User.find(params[:id])
@@ -439,19 +418,17 @@ class UsersController < BaseController
   end  
 
   protected  
-    def setup_metro_areas_for_cloud
-      @metro_areas_for_cloud = MetroArea.find(:all, :conditions => "users_count > 0", :order => "users_count DESC", :limit => 100)
-      @metro_areas_for_cloud = @metro_areas_for_cloud.sort_by{|m| m.name}
+    def setup_neighborhoods_for_cloud
+      @neighborhoods_for_cloud = Neighborhood.find(:all, :conditions => "users_count > 0", :order => "users_count DESC", :limit => 100)
+      @neighborhoods_for_cloud = @neighborhoods_for_cloud.sort_by{|m| m.name}
     end  
   
     def setup_locations_for(user)
-      metro_areas = states = []
-          
-      states = user.country.states if user.country
+      neighborhoods = []
       
-      metro_areas = user.state.metro_areas.all(:order => "name") if user.state
+      neighborhoods = user.county.neighborhoods.all(:order => "name") if user.county
     
-      return metro_areas, states
+      return neighborhoods
     end
 
     def admin_or_current_user_required

@@ -100,7 +100,7 @@ delete_selected_comments 'comments/delete_selected', :controller => "comments", 
 delete_selected_users 'users/delete_selected', :controller => "users", :action => 'delete_selected'
 
 resources :homepage_features
-resources :metro_areas
+#resources :metro_areas
 resources :ads
 resources :contests, :collection => { :current => :get }
 resources :activities
