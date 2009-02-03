@@ -32,8 +32,7 @@
           = radio_button :user, :gender, User::FEMALE
           =:female.l
           
-      - if @user.vendor?
-        %p= render :partial => 'offerings/chooser'
+      %p= render :partial => 'offerings/chooser'
       
       %h3=:more_about_you.l
       .yui-g
