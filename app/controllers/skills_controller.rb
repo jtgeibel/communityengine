@@ -6,8 +6,7 @@ class SkillsController < BaseController
   # GET /skills.xml
   def index
     @skills = Skill.find(:all)
-
-    @users = User.recent.find :all, :include => :tags, :page => {:current => params[:page], :size => 10}
+    @users = User.skills.find :all, :select => 'DISTINCT login, users.*', :include => :tags, :page => {:current => params[:page], :size => 10}
     
     @tags = User.tag_counts :limit => 10
 

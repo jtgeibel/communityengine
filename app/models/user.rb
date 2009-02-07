@@ -74,6 +74,7 @@ class User < ActiveRecord::Base
   named_scope :featured, :conditions => ["users.featured_writer = ?", 1]
   named_scope :active, :conditions => ["users.activated_at IS NOT NULL"]  
   named_scope :vendors, :conditions => ["users.vendor = ?", 1]
+  named_scope :skills, :joins => :offerings
   named_scope :tagged_with, lambda {|tag_name|
     {:conditions => ["tags.name = ?", tag_name], :include => :tags}
   }
