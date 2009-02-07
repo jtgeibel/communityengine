@@ -6,8 +6,6 @@
     %p
       =:remember_you_can_always_change_this_later.l
     %p
-      = link_to "&raquo; "+  :skip_this_step.l, welcome_invite_user_path(@user)
-      %br
       = link_to "&raquo; " + :go_to_your_profile.l, user_path(@user)
 
   - if @user.avatar_photo_url
@@ -20,7 +18,7 @@
 
 #yui-main
   -box :class => "yui-b" do
-    - form_tag user_path(:welcome => 'invite'), :method => 'put', :multipart =>true, :class => "MainForm" do
+    - form_tag user_path, :method => 'put', :multipart =>true, :class => "MainForm" do
       %h3=:about_you.l
       = text_area :user, :description, :rows => 30, :style => 'width:100%', :class => "rich_text_editor"
       
@@ -65,4 +63,4 @@
                 = AppConfig.meta_keywords.split(",")[0..3].join(', ')
 
 
-        %p= submit_tag :save_and_continue_to_step_three.l
+        %p= submit_tag "Create Profile"
