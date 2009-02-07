@@ -5,5 +5,6 @@
     %li= :look_for_a_message_from.l :from => AppConfig.community_name
     %li= :see_you_back_here_in_a_short_while.l        
 
-  %h3= :no_activation_email.l
-  = link_to(:resend_activation_email.l, "/resend_activation?email=#{@user.email}", :method => 'post')
+  %h3= "No activation email?"
+  Be sure to check your spam folder for the email.  Still not working?
+  = link_to("Resend the activation email", "/resend_activation?email=#{@user.email}", :method => 'post')
