@@ -1,10 +1,10 @@
 %h2
-  =:logged_in.l
   = link_to current_user.login, dashboard_user_path(current_user), :id => 'user-menu'
 #user-menu-tip
   %ul
     -if current_user.admin?
       %li=link_to :admin_dashboard.l, admin_dashboard_path
+    %li= link_to "Dashboard", dashboard_user_path(current_user)
     %li= link_to :edit_profile.l, edit_user_path(current_user) 
     %li= link_to :edit_account.l, edit_account_user_path(current_user)          
     %li= link_to :manage_posts.l, manage_user_posts_path(current_user)          
@@ -25,6 +25,6 @@
       hook:{target: 'bottomRight', tip: 'topRight'},
       hideOn: false, 
       hideAfter: 1.5,  
-      className: 'silver',
-      offset: {y:2, x:12}
+      className: '',
+      offset: {y:-5, x:-21}
       });
