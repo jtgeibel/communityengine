@@ -1039,17 +1039,29 @@ table.poll {
 
 /* User Menu Dropdown*/
 #user-menu {
-	padding-right: 15px;
-	background: url(/plugin_assets/community_engine/images/icons/bullet_arrow_down_50.png) no-repeat right;
+	padding-right: 28px;
+	background: url(/plugin_assets/community_engine/images/drop_down_button.png) no-repeat right bottom;
+	display: block;
+	height: 28px;
+	width: 150px;
+	text-align: right;
+	text-decoration: none;
 	}
 #user-menu:hover {
-	background: url(/plugin_assets/community_engine/images/icons/bullet_arrow_down.png) no-repeat right;	
+	background: url(/plugin_assets/community_engine/images/drop_down_button_over.png) no-repeat right bottom;	
 }
-
-.icon_row a {
-   margin-right:5px;
+#user-menu-tip {
+	border: 1px solid #94beff;
+	border-top: none;
+	background-color: #e1ecff;
+	padding-top: 5px;
+	padding-bottom: 8px;
+	width: 150px;
 }
-.icon_row a img {
-   border:0;
-   vertical-align:middle;
+#user-menu-tip hr {
+	height: 1px;
+	border: none;
+	color: #94beff;
+	background-color: #94beff;
+	width: 90%;
 }
