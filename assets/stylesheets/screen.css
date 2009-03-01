@@ -157,7 +157,7 @@ border: none;
 /* 3. WELCOME                                      */
 /* =============================================== */
 
-#welcome .box{
+#signup .box, #welcome .box{
 background: #fff1b2;
 margin-top: 1em;
 padding: 1em;
@@ -165,21 +165,25 @@ border-bottom: 2px solid #ffd735;
 border-top: 1px solid #ffd735;
 }
 
-#welcome .box h2{
+#signup .box h2, #welcome .box h2{
 font-size: 197%;
 margin-bottom:.5em;
 }
 
-#welcome .box h2 a{color: #464337;}
+#signup .box h2 a{color: #464337;}
 
-#welcome .box p{
+#welcome .box p, #signup .box p{
 font-size: 108%;}
 
-#welcome .box h4{
+#welcome ul {
+margin-bottom: 1em;
+}
+
+#signup .box h4{
 background:url(/plugin_assets/community_engine/images/bg_h6btn.gif) repeat-x left center;
 }
 
-#welcome .box h4 a{
+#signup .box h4 a{
 background-color: transparent;
 background-image: url(/plugin_assets/community_engine/images/icons/52.png);
 background-repeat: no-repeat;
@@ -194,11 +198,11 @@ font-weight: bold;
 border: 1px solid #9ec500;
 }
 
-#welcome .first .box h4 a{
+#signup .first .box h4 a{
 background-image: url(/plugin_assets/community_engine/images/icons/31.png);
 }
 
-#welcome .box h4 a:hover{
+#signup .box h4 a:hover{
 background-color: #9ec500;
 }
 
