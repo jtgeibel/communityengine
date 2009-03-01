@@ -1,16 +1,16 @@
 - @meta = { :description => AppConfig.meta_description, :keywords => AppConfig.meta_keywords, :robots => AppConfig.robots_meta_list_content }
 
--unless logged_in?
-  =render :partial => 'base/homepage_banner_message'
-
 #yui-main
   .yui-b
+    =render :partial => 'base/intro'
     -box :class => "hfeed" do 
       %h3
         =:recent_posts.l
       = render :partial => 'posts/post', :collection => @posts
       %h6.all= link_to :see_all_recent_posts.l, recent_path
 .yui-b  
+  -unless logged_in?
+    =render :partial => 'base/signup_button'
   =render :partial => 'shared/explore'
 
   -box :class => "alt" do 
