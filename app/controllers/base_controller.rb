@@ -36,6 +36,7 @@ class BaseController < ApplicationController
   def site_index
     @posts = Post.find_recent
 
+    @popular_tags = popular_tags(30, ' count DESC')
     @rss_title = "#{AppConfig.community_name} "+:recent_posts.l
     @rss_url = rss_url
     respond_to do |format|
