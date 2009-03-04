@@ -30,6 +30,12 @@
       %a{:href=>"/popular"}= :see_all.l
 
   .box.alt
+    %h3=:tags.l
+    - tag_cloud @popular_tags, %w(nube1 nube2 nube3 nube4 nube5) do |name, css_class|
+      = link_to name, tag_path(URI::encode(name, /[\/.?#]/)), :class => css_class
+    %h6.all=link_to :all_tags.l, tags_path
+
+  .box.alt
     %h3= AppConfig.featured_writer_label
     -@featured_writers.each do |user|
       =render :partial => "users/sidebar_user", :locals => {:user => user}
