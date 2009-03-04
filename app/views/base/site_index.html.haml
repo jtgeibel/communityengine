@@ -36,11 +36,6 @@
     %h6.all=link_to :all_tags.l, tags_path
 
   .box.alt
-    %h3= AppConfig.featured_writer_label
-    -@featured_writers.each do |user|
-      =render :partial => "users/sidebar_user", :locals => {:user => user}
-
-  .box.alt
     %h3= :active_users.l
     -@active_users.each do |user|    
       =render :partial => "users/sidebar_user", :locals => {:user => user}      
