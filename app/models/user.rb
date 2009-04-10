@@ -359,9 +359,9 @@ class User < ActiveRecord::Base
   def network_activity(page = {}, since = 1.week.ago)
     page.reverse_merge :size => 10, :current => 1
     friend_ids = self.friends_ids
-    metro_area_people_ids = self.metro_area ? self.metro_area.users.map(&:id) : []
+    neighborhood_people_ids = self.neighborhood ? self.neighborhood.users.map(&:id) : []
     
-    ids = ((friends_ids | metro_area_people_ids) - [self.id])[0..100] #don't pull TOO much activity for now
+    ids = ((friends_ids | neighborhood_people_ids) - [self.id])[0..100] #don't pull TOO much activity for now
     
     Activity.recent.since(since).by_users(ids).find(:all, :page => page)          
   end
