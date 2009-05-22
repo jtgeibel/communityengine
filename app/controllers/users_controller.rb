@@ -109,7 +109,7 @@ class UsersController < BaseController
     if (!AppConfig.require_captcha_on_signup || verify_recaptcha(@user)) && @user.save
       create_friendship_with_inviter(@user, params)
       flash[:notice] = :email_signup_thanks.l_with_args(:email => @user.email) 
-      redirect_to signup_completed_user_path(@user.activation_code)
+      redirect_to signup_completed_user_path(@user)
     else
       render :action => 'new'
     end
@@ -181,12 +181,15 @@ class UsersController < BaseController
   end
   
   def crop_profile_photo    
-    @photo = @user.avatar    
+    unless @photo = @user.avatar   
+      flash[:notice] = :no_profile_photo.l
+      redirect_to upload_profile_photo_user_path(@user) and return
+    end
     return unless request.put?
     
     if @photo
       if params[:x1]
-        img = Magick::Image::read(@photo.s3_url).first.crop(params[:x1].to_i, params[:y1].to_i,params[:width].to_i, params[:height].to_i, true)
+        img = Magick::Image::read(@photo.path_or_s3_url_for_image).first.crop(params[:x1].to_i, params[:y1].to_i,params[:width].to_i, params[:height].to_i, true)
         img.format = @photo.content_type.split('/').last
         crop = {'tempfile' => StringIO.new(img.to_blob), 'content_type' => @photo.content_type, 'filename' => "custom_#{@photo.filename}"}
         @photo.uploaded_data = crop
@@ -280,7 +283,7 @@ class UsersController < BaseController
   end
   
   def signup_completed
-    @user = User.find_by_activation_code(params[:id])
+    @user = User.find(params[:id])
     redirect_to home_path and return unless @user
     render :action => 'signup_completed', :layout => 'beta' if AppConfig.closed_beta_mode    
   end
@@ -336,9 +339,9 @@ class UsersController < BaseController
   def resend_activation
     return unless request.post?       
 
-    @user = User.find_by_email(params[:email])    
+    @user = User.find(params[:id])    
     if @user && !@user.active?
-      flash[:notice] = :activation_email_resent_message.l :admin_email => AppConfig.support_email
+      flash[:notice] = :activation_email_resent_message.l
       UserNotifier.deliver_signup_notification(@user)    
       redirect_to login_path and return
     else

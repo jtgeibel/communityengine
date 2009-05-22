@@ -1,32 +1,37 @@
-CommunityEngine
+CommunityEngine [v1.0.2]
 ================
 
 Information at: [http://www.communityengine.org](http://www.communityengine.org)
 
 Requirements:
 
-	- RAILS VERSION 2.2.2
-	- The engines plugin for Rails 2.2.2
+	- RAILS VERSION 2.3.2
 	- ImageMagick (>6.4) 
 	- Several gems:
+	  desert
 	  rmagick
 	  hpricot
 	  htmlentities
-	  RedCloth
 	  rake 0.8.3
-	  haml 2.0.5 (updated for Rails 2.2.2)
+	  haml 2.0.5
 	  aws-s3 (if using s3 for photos)
 
 Getting CommunityEngine Running
 --------------------------------
+
+SHORT VERSION: 
+
+        rails your_app_name -m http://www.communityengine.org/install_template.rb
+
+LONG VERSION:
+
 1. From the command line
 
 		$ rails site_name (create a rails app if you don't have one already)    
 
-    
-2. Install the engines plugin:
+2. Install desert:
 
-		$ script/plugin install git://github.com/lazyatom/engines.git
+		$ sudo gem install desert
 	
 3. Put the community engine plugin into plugins directory (use one of the following methods):
 
@@ -41,6 +46,10 @@ Getting CommunityEngine Running
 	* If you want to keep your community_engine plugin up to date using git, you'll have to add it as a submodule:
 	
 			http://www.kernel.org/pub/software/scm/git/docs/user-manual.html#submodules
+			Basically:
+			git submodule add git://github.com/bborn/communityengine.git vendor/plugins/community_engine
+			git submodule init
+			git submodule update
 
 	* Make sure you rename your CE directory to `community_engine` (note the underscore) if it isn't named that for some reason
 
@@ -51,19 +60,24 @@ Getting CommunityEngine Running
 6. Modify your environment.rb as indicated below:
 
 		## environment.rb should look something like this:
-		RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
+		RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 		require File.join(File.dirname(__FILE__), 'boot')
-		require File.join(File.dirname(__FILE__), '../vendor/plugins/engines/boot')
+
+        require 'desert'
 
 		Rails::Initializer.run do |config|
-		  #resource_hacks required here to ensure routes like /:login_slug work
-		  config.plugins = [:engines, :community_engine, :white_list, :all]
-		  config.plugin_paths += ["#{RAILS_ROOT}/vendor/plugins/community_engine/engine_plugins"]
+		  config.plugins = [:community_engine, :white_list, :all]
+		  config.plugin_paths += ["#{RAILS_ROOT}/vendor/plugins/community_engine/plugins"]
+		  
+          config.action_controller.session = {
+            :key    => '_your_app_session',
+            :secret => 'secret'
+          }
 
 		  ... Your stuff here ...
 		end
 		# Include your application configuration below
-		require "#{RAILS_ROOT}/vendor/plugins/community_engine/engine_config/boot.rb"
+		require "#{RAILS_ROOT}/vendor/plugins/community_engine/config/boot.rb"
 
 7. Modify each environment file (`development.rb`, `test.rb`, and `production.rb`) as indicated below:
 
@@ -73,7 +87,7 @@ Getting CommunityEngine Running
 8. Modify your routes.rb as indicated below:
 
 		# Add this after any of your own existing routes, but before the default rails routes: 
-		map.from_plugin :community_engine
+		map.routes_from_plugin :community_engine
 		# Install the default routes as the lowest priority.
 		map.connect ':controller/:action/:id'
 		map.connect ':controller/:action/:id.:format'     
@@ -111,7 +125,7 @@ Optional Configuration
 
 To override the default configuration, create an `application.yml` file in `RAILS_ROOT/config` 
 
-The application configuration defined in this file overrides the one defined in `/community_engine/engine_config/application.yml`
+The application configuration defined in this file overrides the one defined in `/community_engine/config/application.yml`
 
 This is where you can change commonly used configuration variables, like `AppConfig.community_name`, etc.
 
@@ -219,8 +233,12 @@ Gotchas
 
 1. I get errors running rake! Error: (wrong number of arguments (3 for 1)
   - make sure you have the latest version of rake
-2. I get test errors after upgrading to Rails 2.2.2
-  - make sure you have upgraded to the latest Engines plugin, and modified your environment.rb to use Rails 2.2.2.
+2. When upgrading to Rails 2.3, make sure your `action_controller.session` key is called `:key`, instead of the old `:session_key`:
+
+        config.action_controller.session = {
+          :key => '_ce_session',
+          :secret      => 'secret'
+        }
 
 
 Contributors - Thanks! :)
