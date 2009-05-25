@@ -1,5 +1,6 @@
 class CommentsController < BaseController
   before_filter :login_required, :except => [:index]
+  before_filter :admin_or_moderator_required, :only => [:delete_selected]
 
   if AppConfig.allow_anonymous_commenting
     skip_before_filter :verify_authenticity_token, :only => [:create]   #because the auth token might be cached anyway
@@ -17,7 +18,7 @@ class CommentsController < BaseController
     #don't use the get_type, as we want the specific case where the user typed /User/username/comments
     redirect_to user_comments_path(params[:commentable_id]) and return if (params[:commentable_type] && params[:commentable_type].camelize == "User")    
       
-    unless logged_in? || @commentable && @commentable.owner.profile_public?
+    unless logged_in? || @commentable && (!@commentable.owner.nil? && @commentable.owner.profile_public?)
       flash.now[:error] = :this_users_profile_is_not_public_youll_need_to_create_an_account_and_log_in_to_access_it.l
       redirect_to :controller => 'sessions', :action => 'new' and return
     end
@@ -86,20 +87,12 @@ class CommentsController < BaseController
         @comment.send_notifications
 
         flash.now[:notice] = :comment_was_successfully_created.l
-        format.html {
-          redirect_to commentable_url(@comment)
-        }
-        format.js {
-          render :partial => 'comments/comment.html.haml', :locals => {:comment => @comment, :highlighted => true}
-        }
+        format.html { redirect_to commentable_url(@comment) }
+        format.js
       else
         flash.now[:error] = :comment_save_error.l_with_args(:error => @comment.errors.full_messages.to_sentence)
-        format.html {
-          redirect_to :controller => comment_type.underscore.pluralize, :action => 'show', :id => comment_id
-        }
-        format.js{
-          render :inline => flash[:error], :status => 500
-        }
+        format.html { redirect_to :controller => comment_type.underscore.pluralize, :action => 'show', :id => comment_id }
+        format.js
       end
     end
   end
@@ -119,6 +112,19 @@ class CommentsController < BaseController
       }
     end
   end
+  
+  def delete_selected
+    if request.post?
+      if params[:delete]
+        params[:delete].each { |id|
+          comment = Comment.find(id)
+          comment.destroy if comment.can_be_deleted_by(current_user)
+        }
+      end
+      flash[:notice] = :comments_deleted.l                
+      redirect_to admin_comments_path
+    end
+  end  
 
 
   private
@@ -141,7 +147,7 @@ class CommentsController < BaseController
   end
   
   def comment_rss_link
-    params[:commentable_id] ? formatted_comments_path(@commentable.class.to_s.underscore, @commentable.id, :rss) : formatted_user_comments_path(@user, :rss)
+    params[:commentable_id] ? comments_path(@commentable.class.to_s.underscore, @commentable.id, :format => :rss) : user_comments_path(@user, :format => :rss)
   end
   
   def comment_title

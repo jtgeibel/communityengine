@@ -1,10 +1,9 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class UserTest < Test::Unit::TestCase
+class UserTest < ActiveSupport::TestCase
   # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead.
   # Then, you can remove it from this and the functional test.
-  include AuthenticatedTestHelper
-  fixtures :users, :states, :metro_areas, :friendships, :roles, :friendship_statuses
+  fixtures :all
 
   def test_should_create_user
     assert_difference User, :count do
@@ -161,17 +160,24 @@ class UserTest < Test::Unit::TestCase
   end
   
   def test_get_network_activity
+    users(:aaron).track_activity(:logged_in) #create an activity
+        
     u = users(:quentin)
     f = friendships(:aaron_receive_quentin_pending)
     f.update_attributes(:friendship_status => FriendshipStatus[:accepted]) && f.reverse.update_attributes(:friendship_status => FriendshipStatus[:accepted])
-    assert !u.network_activity.empty?
+    assert !u.network_activity.empty?    
   end
   
   def test_comments_activity
     user = users(:quentin)
+    
+    #might be a good idea to check if there are any comments_activity objects beforehand
+    #assert_equal 0, user.comments_activity.size
+    
     2.times do
       comment = Comment.create!(:comment => "foo", :user => users(:aaron), :commentable => user, :recipient => user)
     end
+    
     assert_equal 2, user.comments_activity.size
   end
   

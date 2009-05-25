@@ -5,9 +5,7 @@ class PhotosController < BaseController
   before_filter :find_user, :only => [:new, :edit, :index, :show, :slideshow, :swfupload]
   before_filter :require_current_user, :only => [:new, :edit, :update, :destroy, :swfupload]
 
-  skip_before_filter :verify_authenticity_token, :only => [:create, :swfupload] #because the TinyMCE image uploader can't provide the auth token
-
-  session :cookie_only => false, :only => :swfupload
+  skip_before_filter :verify_authenticity_token, :only => [:create] #because the TinyMCE image uploader can't provide the auth token
 
   uses_tiny_mce(:options => AppConfig.simple_mce_options, :only => [:show])
 
@@ -16,7 +14,7 @@ class PhotosController < BaseController
   def recent
     @photos = Photo.recent.find(:all, :page => {:current => params[:page]})
   end
-
+  
   # GET /photos
   # GET /photos.xml
   def index
@@ -33,7 +31,7 @@ class PhotosController < BaseController
     @tags = Photo.tag_counts :conditions => { :user_id => @user.id }, :limit => 20
 
     @rss_title = "#{AppConfig.community_name}: #{@user.login}'s photos"
-    @rss_url = formatted_user_photos_path(@user,:rss)
+    @rss_url = user_photos_path(@user,:format => :rss)
 
     respond_to do |format|
       format.html # index.rhtml
@@ -71,8 +69,8 @@ class PhotosController < BaseController
   # GET /photos/1
   # GET /photos/1.xml
   def show
-    @photo = Photo.find(params[:id])
-    @user = @photo.user
+    @photo = @user.photos.find(params[:id])
+    
     @is_current_user = @user.eql?(current_user)
     @comment = Comment.new(params[:comment])
 
@@ -188,7 +186,7 @@ class PhotosController < BaseController
   end
 
   def slideshow
-    @xml_file = formatted_user_photos_url( {:user_id => @user, :format => :xml}.merge(:tag_name => params[:tag_name]) )
+    @xml_file = user_photos_url( {:user_id => @user, :format => :xml}.merge(:tag_name => params[:tag_name]) )
     render :action => 'slideshow'
   end
 

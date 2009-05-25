@@ -3,11 +3,11 @@ require File.expand_path(File.dirname(__FILE__) + "/../../../../config/environme
 require 'test_help'
 require 'action_view/test_case'
 require 'pp'
-Test::Unit::TestCase.fixture_path = (RAILS_ROOT + "/vendor/plugins/community_engine/test/fixtures/")
-ActionController::IntegrationTest.fixture_path = Test::Unit::TestCase.fixture_path
+ActiveSupport::TestCase.fixture_path = (RAILS_ROOT + "/vendor/plugins/community_engine/test/fixtures/")
+ActionController::IntegrationTest.fixture_path = ActiveSupport::TestCase.fixture_path
 
 
-class Test::Unit::TestCase
+class ActiveSupport::TestCase
   include AuthenticatedTestHelper
   
   def self.all_fixtures
@@ -48,6 +48,27 @@ class Test::Unit::TestCase
       expected_models.collect(&to_test_param), actual_models.collect(&to_test_param))
     assert_block(full_message) { (expected_models == actual_models || expected_models == actual_models.results) }
   end
+  
+  def assert_js_redirected_to(options={}, message=nil)
+    clean_backtrace do
+      assert_response(:success, message)
+      assert_match /text\/javascript/, @response.headers['Content-Type'], 'Response should be Javascript content-type';
+      js_regexp = %r{(\w+://)?.*?(/|$|\\\?)(.*)}
+      url_regexp = %r{^window\.location\.href [=] ['"]#{js_regexp}['"][;]$}
+      redirected_to = @response.body.match(url_regexp)
+      assert_not_nil(redirected_to, message)
+      redirected_to = redirected_to[3]
+      msg = build_message(message, "expected a JS redirect to , found one to ", options, redirected_to)
+
+      if options.is_a?(String)
+        assert_equal(options.gsub(/^\//, ''), redirected_to, message)
+      else
+        msg = build_message(message, "response is not a redirection to all of the options supplied (redirection is )", redirected_to)
+        assert_equal(@controller.url_for(options).match(js_regexp)[3], redirected_to, msg)
+      end
+    end
+  end
+  
    
 end
 

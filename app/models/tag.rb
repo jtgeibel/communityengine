@@ -1,9 +1,12 @@
-require_dependency File.dirname(__FILE__) + '/../../engine_plugins/acts_as_taggable_on_steroids/lib/tag.rb'
+require_dependency File.dirname(__FILE__) + '/../../plugins/acts_as_taggable_on_steroids/lib/tag.rb'
 
 class Tag < ActiveRecord::Base
   
   def to_param
-    URI::encode(self.name, /[\/.?#]/)    
+    param = URI.escape(self.name, /[\/.?#]/)    
+    #quote if needed
+    param = "\"#{param}\"" if param.match(TagList.delimiter)
+    param
   end
 
   def related_tags
@@ -15,7 +18,7 @@ class Tag < ActiveRecord::Base
       ON taggings.tag_id = tags.id
       WHERE (taggings.taggable_id IN (#{taggable_ids.join(',')}))
       AND tags.id != '#{self.id}'
-      GROUP BY tags.id
+      GROUP BY tags.id, tags.name
       ORDER BY count DESC
       LIMIT 10"
 
@@ -27,7 +30,7 @@ class Tag < ActiveRecord::Base
       FROM taggings, tags 
       WHERE tags.id = taggings.tag_id "
     sql += " AND taggings.taggable_type = '#{type}'" unless type.nil?      
-    sql += " GROUP BY tag_id"
+    sql += " GROUP BY tags.id, tags.name"
     sql += " ORDER BY #{order}"
     sql += " LIMIT #{limit}" if limit
     Tag.find_by_sql(sql)

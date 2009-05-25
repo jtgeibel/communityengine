@@ -109,22 +109,19 @@ module BaseHelper
 		title = app_base
 		case @controller.controller_name
 			when 'base'
-				case @controller.action_name
-					when 'popular'
-						title = :popular_posts.l+' &raquo; ' + app_base + tagline
-					else 
-						title += tagline
-				end
+					title += tagline
 			when 'posts'
         if @post and @post.title
           title = @post.title + ' &raquo; ' + app_base + tagline
           title += (@post.tags.empty? ? '' : " &laquo; "+:keywords.l+": " + @post.tags[0...4].join(', ') )
+          @canonical_url = user_post_url(@post.user, @post)
         end
 			when 'users'
-        if @user and @user.login
+        if @user && !@user.new_record? && @user.login 
           title = @user.login
           title += ', expert in ' + @user.offerings.collect{|o| o.skill.name }.join(', ') if @user.vendor? and !@user.offerings.empty?
           title += ' &raquo; ' + app_base + tagline
+          @canonical_url = user_url(@user)          
         else
           title = :showing_users.l+' &raquo; ' + app_base + tagline
         end
@@ -137,12 +134,16 @@ module BaseHelper
           title = @user.login + '\'s '+:clippings.l+' &raquo; ' + app_base + tagline
         end
 			when 'tags'
-        if @tag and @tag.name
-          title = @tag.name + ' '+:posts_photos_and_bookmarks.l+' &raquo; ' + app_base + tagline
-          title += ' | Related: ' + @related_tags.join(', ')
-        else
-          title = 'Showing tags &raquo; ' + app_base + tagline
-        end
+				case @controller.action_name
+			    when 'show'
+            title = @tags.map(&:name).join(', ') + ' '
+            title += params[:type] ? params[:type].pluralize : :posts_photos_and_bookmarks.l
+            title += ' (Related: ' + @related_tags.join(', ') + ')' if @related_tags
+            title += ' | ' + app_base    
+            @canonical_url = tag_url(URI.escape(@tags_raw, /[\/.?#]/)) if @tags_raw
+          else
+          title = 'Showing tags &raquo; ' + app_base + tagline            
+			  end
       when 'categories'
         if @category and @category.name
           title = @category.name + ' '+:posts_photos_and_bookmarks.l+' &raquo; ' + app_base + tagline
@@ -196,15 +197,14 @@ module BaseHelper
   def more_comments_links(commentable)
     html = link_to "&raquo; " + :all_comments.l, comments_url(commentable.class.to_s.underscore, commentable.to_param)
     html += "<br />"
-		html += link_to "&raquo; " + :comments_rss.l, formatted_comments_url(commentable.class.to_s.underscore, commentable.to_param, :rss)
+		html += link_to "&raquo; " + :comments_rss.l, comments_url(commentable.class.to_s.underscore, commentable.to_param, :format => :rss)
 		html
   end
   
   def more_user_comments_links(user = @user)
     html = link_to "&raquo; " + :all_comments.l, user_comments_url(user)
     html += "<br />"
-    #formatted_user_comments_url(user.to_param, :rss) was still returning /user/id/comments.rss, so brute-forcing it
-		html += link_to "&raquo; " + :comments_rss.l, formatted_user_comments_url(user.to_param, :rss)
+		html += link_to "&raquo; " + :comments_rss.l, user_comments_url(user.to_param, :format => :rss)
 		html  
   end
   
@@ -301,10 +301,9 @@ module BaseHelper
 
   def search_user_posts_path(rss = false)
     options = params[:q].blank? ? {} : {:q => params[:q]}
-    prefix = rss ? 'formatted_' : ''
-    options[:format] = 'rss' if rss
+    options[:format] = :rss if rss
     [[:user, :user_id], [:forum, :forum_id]].each do |(route_key, param_key)|
-      return send("#{prefix}#{route_key}_sb_posts_path", options.update(param_key => params[param_key])) if params[param_key]
+      return send("#{route_key}_sb_posts_path", options.update(param_key => params[param_key])) if params[param_key]
     end
     options[:q] ? search_all_sb_posts_path(options) : send("all_#{prefix}sb_posts_path", options)
   end
@@ -327,11 +326,11 @@ module BaseHelper
 
   def time_ago_in_words_or_date(date)
     if date.to_date.eql?(Time.now.to_date)
-      display = date.strftime("%l:%M%p").downcase
+      display = I18n.l(date.to_time, :format => :time_ago)
     elsif date.to_date.eql?(Time.now.to_date - 1)
       display = :yesterday.l
     else
-      display = date.strftime("%B %d")
+      display = I18n.l(date.to_date, :format => :date_ago)
     end
   end
   

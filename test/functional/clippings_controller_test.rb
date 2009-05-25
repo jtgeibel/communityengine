@@ -1,10 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
-require 'clippings_controller'
 
-# Re-raise errors caught by the controller.
-class ClippingsController; def rescue_action(e) raise e end; end
-
-class ClippingsControllerTest < Test::Unit::TestCase
+class ClippingsControllerTest < ActionController::TestCase
   fixtures :clippings, :users, :roles
 
   def setup
@@ -70,7 +66,7 @@ class ClippingsControllerTest < Test::Unit::TestCase
       assert_redirected_to user_clipping_path(users(:quentin), assigns(:clipping))
 
       clipping = Clipping.find(assigns(:clipping).id)
-      assert_equal ['tag1', 'tag2'], clipping.tag_list
+      assert_equal ['tag1', 'tag2'], clipping.tag_list.sort
     end    
   end
 
@@ -104,7 +100,7 @@ class ClippingsControllerTest < Test::Unit::TestCase
     assert_redirected_to user_clipping_path(users(:quentin), assigns(:clipping))
 
     clipping = Clipping.find(assigns(:clipping).id)
-    assert_equal ['tagX', 'tagY'], clipping.tag_list
+    assert_equal ['tagX', 'tagY'], clipping.tag_list.sort
   end
   
   def test_should_destroy_clipping

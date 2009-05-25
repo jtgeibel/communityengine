@@ -6,7 +6,7 @@ class SbPostsController < BaseController
 
   def index
     conditions = []
-    [:user_id, :forum_id].each { |attr| conditions << SbPost.send(:sanitize_sql, ["sb_posts.#{attr} = ?", params[attr]]) if params[attr] }
+    [:user_id, :forum_id].each { |attr| conditions << SbPost.send(:sanitize_sql, ["sb_posts.#{attr} = ?", params[attr].to_i]) if params[attr] }
     conditions = conditions.any? ? conditions.collect { |c| "(#{c})" }.join(' AND ') : nil
 
     @posts = SbPost.with_query_options.find :all, :conditions => conditions, :page => {:current => params[:page]}
@@ -47,7 +47,7 @@ class SbPostsController < BaseController
   end
 
   def create
-    @topic = Topic.find_by_id_and_forum_id(params[:topic_id],params[:forum_id], :include => :forum)
+    @topic = Topic.find_by_id_and_forum_id(params[:topic_id].to_i, params[:forum_id].to_i, :include => :forum)
     if @topic.locked?
       respond_to do |format|
         format.html do
@@ -68,7 +68,7 @@ class SbPostsController < BaseController
       format.html do
         redirect_to forum_topic_path(:forum_id => params[:forum_id], :id => params[:topic_id], :anchor => @post.dom_id, :page => params[:page] || '1')
       end
-      format.xml { head :created, :location => formatted_sb_user_post_url(:forum_id => params[:forum_id], :topic_id => params[:topic_id], :id => @post, :format => :xml) }
+      format.xml { head :created, :location => sb_user_post_url(:forum_id => params[:forum_id], :topic_id => params[:topic_id], :id => @post, :format => :xml) }
     end
   rescue ActiveRecord::RecordInvalid
     flash[:bad_reply] = :please_post_something_at_least.l
@@ -122,12 +122,12 @@ class SbPostsController < BaseController
     end
     
     def find_post
-      @post = SbPost.find_by_id_and_topic_id_and_forum_id(params[:id], params[:topic_id], params[:forum_id]) || raise(ActiveRecord::RecordNotFound)
+      @post = SbPost.find_by_id_and_topic_id_and_forum_id(params[:id].to_i, params[:topic_id].to_i, params[:forum_id].to_i) || raise(ActiveRecord::RecordNotFound)
     end
     
     def render_posts_or_xml(template_name = action_name)
       respond_to do |format|
-        format.html { render :action => "#{template_name}.html.erb" }
+        format.html { render :action => "#{template_name}" }
         format.rss  { render :action => "#{template_name}.xml.builder", :layout => false }
         format.xml  { render :xml => @posts.to_xml }
       end
