@@ -74,7 +74,10 @@ gem 'hpricot', :lib => 'hpricot'
 gem 'htmlentities', :lib => 'htmlentities'      
 gem 'haml', :lib => 'htmlentities'        
 gem "aws-s3", :lib => "aws/s3" 
+gem 'calendar_date_select'
+gem 'icalendar'
 rake('gems:install', :sudo => true)
+
 
 plugin 'community_engine', :git => ce_git_repo, :submodule => true
 

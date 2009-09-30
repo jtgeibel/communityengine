@@ -313,7 +313,7 @@ class UsersController < BaseController
   def forgot_password  
     return unless request.post?   
 
-    @user = User.find_by_email(params[:email])  
+    @user = User.active.find_by_email(params[:email])  
     if @user && @user.reset_password
       UserNotifier.deliver_reset_password(@user)
       @user.save
@@ -327,7 +327,7 @@ class UsersController < BaseController
   def forgot_username  
     return unless request.post?   
     
-    if @user = User.find_by_email(params[:email])
+    if @user = User.active.find_by_email(params[:email])
       UserNotifier.deliver_forgot_username(@user)
       redirect_to login_url
       flash[:info] = :your_username_was_emailed_to_you.l      
@@ -339,7 +339,12 @@ class UsersController < BaseController
   def resend_activation
     return unless request.post?       
 
-    @user = User.find(params[:id])    
+    if params[:email]
+      @user = User.find_by_email(params[:email])    
+    else
+      @user = User.find(params[:id])
+    end
+    
     if @user && !@user.active?
       flash[:notice] = :activation_email_resent_message.l
       UserNotifier.deliver_signup_notification(@user)    
@@ -388,7 +393,7 @@ class UsersController < BaseController
       date = Date.new(params[:date][:year].to_i, params[:date][:month].to_i)
       @month = Time.parse(date.to_s)
     else
-      @month = Date.today.to_time
+      @month = Date.today    
     end
     
     start_date  = @month.beginning_of_month

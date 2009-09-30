@@ -32,8 +32,8 @@ class BaseController < ApplicationController
     render :layout => false
   end
 
-  def site_index    
-    @posts = Post.find_recent(:limit => 10)
+  def site_index
+    @posts = Post.find_recent
 
     @popular_tags = popular_tags(30, ' count DESC')
     @rss_title = "#{AppConfig.community_name} "+:recent_posts.l
@@ -62,13 +62,7 @@ class BaseController < ApplicationController
     render :partial => 'homepage_feature', :collection => @homepage_features and return
   end
     
-  def about
-  end
-  
   def advertise
-  end
-  
-  def faq
   end
   
   def css_help
@@ -132,7 +126,7 @@ class BaseController < ApplicationController
     @homepage_features = HomepageFeature.find_features
     @homepage_features_data = @homepage_features.collect {|f| [f.id, f.public_filename(:large) ]  }    
     
-    @active_users = User.find_by_activity({:limit => 5, :require_avatar => false})
+    @active_users = User.active.find_by_activity({:limit => 5, :require_avatar => false})
     @featured_writers = User.find_featured
 
     @featured_posts = Post.find_featured
@@ -163,6 +157,6 @@ class BaseController < ApplicationController
     else
       "#{polymorphic_path(commentable)}#comments"      
     end    
-  end
+  end  
 
 end

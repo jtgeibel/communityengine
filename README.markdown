@@ -1,5 +1,4 @@
-CommunityEngine [v1.0.2]
-================
+CommunityEngine [v1.0.3]
 
 Information at: [http://www.communityengine.org](http://www.communityengine.org)
 
@@ -8,12 +7,14 @@ Requirements:
 	- RAILS VERSION 2.3.2
 	- ImageMagick (>6.4) 
 	- Several gems:
-	  desert
+      desert 0.5.2
 	  rmagick
 	  hpricot
 	  htmlentities
 	  rake 0.8.3
 	  haml 2.0.5
+	  calendar_date_select
+	  icalendar
 	  aws-s3 (if using s3 for photos)
 
 Getting CommunityEngine Running
@@ -68,6 +69,8 @@ LONG VERSION:
 		Rails::Initializer.run do |config|
 		  config.plugins = [:community_engine, :white_list, :all]
 		  config.plugin_paths += ["#{RAILS_ROOT}/vendor/plugins/community_engine/plugins"]
+		  config.gem 'calendar_date_select'
+		  config.gem 'icalendar'		
 		  
           config.action_controller.session = {
             :key    => '_your_app_session',
@@ -252,6 +255,9 @@ Contributors - Thanks! :)
 - David Fugere - French localization
 - Barry Paul - routes refactoring
 - [Andrei Erdoss](http://github.com/cauta) localization
+- [Errol Siegel](http://github.com/eksatx) simple private messages integration, documentation help
+- Carl Fyffe - documentation, misc.
+- [Juan de Frías](http://github.com/juafrlo) static pages, photo albums, message_controller tests
 
 
 To Do

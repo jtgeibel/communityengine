@@ -4,22 +4,17 @@
   .yui-b
     =render :partial => 'base/intro'
     %iframe{:src => "http://www.google.com/calendar/embed?title=Upcoming%20Events&amp;showTabs=0&amp;showCalendars=0&amp;mode=AGENDA&amp;height=180&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=l11c2rg6hr0shrepi3dad74ibk%40group.calendar.google.com&amp;color=%23AB8B00&amp;ctz=America%2FNew_York", :style => "border-width:0", :width => 611, :height => 180, :frameborder => 0, :scrolling => "no"}
-    .box.hfeed
+    -box :class => "hfeed" do 
       %h3
         =:recent_posts.l
       = render :partial => 'posts/post', :collection => @posts
+      %h6.all= link_to :see_all_recent_posts.l, recent_path
 .yui-b  
   -unless logged_in?
     =render :partial => 'base/signup_button'
-  .box
-    %h3= :explore_site.l :site => AppConfig.community_name
-    %ul.list.checks
-      - Category.find(:all).each do |c|
-        %li= link_to c.name, category_path(c)
-      %li= link_to :whats_popular.l, popular_url, {:class => 'popular'}
-      %li= link_to :find_an_expert.l, skills_path, {:class => 'users'}
+  =render :partial => 'shared/explore'
 
-  .box.alt
+  -box :class => "alt" do 
     %h3
       = :whats_hot.l
       
@@ -27,15 +22,18 @@
       -@popular_posts.each do |post|
         =render :partial => 'posts/sidebar_post', :locals => {:post => post}
     %h6.all
-      %a{:href=>"/popular"}= :see_all.l
+      %a{:href=>popular_url}= :see_all.l
 
-  .box.alt
+  -box :class => "alt" do 
     %h3=:tags.l
     - tag_cloud @popular_tags, %w(nube1 nube2 nube3 nube4 nube5) do |name, css_class|
       = link_to name, tag_path(URI::encode(name, /[\/.?#]/)), :class => css_class
     %h6.all=link_to :all_tags.l, tags_path
-
-  .box.alt
+    %h3
+      =:featured_writer.l
+    -@featured_writers.each do |user|
+      =render :partial => "users/sidebar_user", :locals => {:user => user}
+  -box :class => "alt" do 
     %h3= :active_users.l
     -@active_users.each do |user|    
       =render :partial => "users/sidebar_user", :locals => {:user => user}      
