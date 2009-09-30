@@ -1,6 +1,6 @@
 %h3
   = event.name
-  = "(#{event.metro_area.to_s})" unless event.metro_area.blank?
+  = "(#{event.neighborhood.to_s})" unless event.neighborhood.blank?
 - if (logged_in? && (event.user.eql?(current_user) || admin?))
   .event-edit-link
     = link_to :edit.l, edit_event_path(event)
@@ -29,4 +29,3 @@
         = link_to :rsvp.l, new_event_rsvp_url(event)
 - if show_details_link
   %p= link_to :event_details.l, event_url(event)
-
