@@ -1,6 +1,6 @@
 %h3
   = event.name
-  = "(#{event.metro_area.to_s})" unless event.metro_area.blank?
+  = "(#{event.neighborhood.to_s})" unless event.neighborhood.blank?
 %p
   %b= :when.l+":"
   =h event.time_and_date
@@ -21,4 +21,3 @@
       = link_to :rsvp.l, new_event_rsvp_url(event)
 - if show_details_link
   %p= link_to :event_details.l, event_url(event)
-
