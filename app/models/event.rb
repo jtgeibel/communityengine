@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
   validates_presence_of :user
 
   belongs_to :user
-  belongs_to :metro_area
+  belongs_to :neighborhood
   has_many :rsvps, :dependent=>:destroy
   has_many :attendees, :source=>:user, :through=>:rsvps
 

@@ -35,7 +35,7 @@ class EventsController < BaseController
       rical_event = RiCal.Event do |event|
         event.dtstart = ce_event.start_time
         event.dtend = ce_event.end_time
-        event.summary = ce_event.name + (ce_event.metro_area.blank? ? '' : " (#{ce_event.metro_area})")
+        event.summary = ce_event.name + (ce_event.neighborhood.blank? ? '' : " (#{ce_event.neighborhood})")
         coder = HTMLEntities.new
         event.description = (ce_event.description.blank? ? '' : coder.decode(help.strip_tags(ce_event.description).to_s) + "\n\n") + event_url(ce_event)
         event.location = ce_event.location unless ce_event.location.blank?
@@ -65,23 +65,23 @@ class EventsController < BaseController
 
   def new
     @event = Event.new(params[:event])
-    @metro_areas, @states = setup_metro_area_choices_for(current_user)
-    @metro_area_id, @state_id, @country_id = setup_location_for(current_user)
+    @neighborhoods = setup_neighborhood_choices_for(current_user)
+    @neighborhood_id, @county_id = setup_location_for(current_user)
   end
   
   def edit
     @event = Event.find(params[:id])
-    @metro_areas, @states = setup_metro_area_choices_for(@event)
-    @metro_area_id, @state_id, @country_id = setup_location_for(@event)
+    @neighborhoods = setup_neighborhood_choices_for(@event)
+    @neighborhood_id, @county_id = setup_location_for(@event)
   end
     
   def create
     @event = Event.new(params[:event])
     @event.user = current_user
-    if params[:metro_area_id]
-      @event.metro_area = MetroArea.find(params[:metro_area_id])
+    if params[:neighborhood_id]
+      @event.neighborhood = Neighborhood.find(params[:neighborhood_id])
     else
-      @event.metro_area = nil
+      @event.neighborhood = nil
     end
     respond_to do |format|
       if @event.save
@@ -90,11 +90,10 @@ class EventsController < BaseController
         format.html { redirect_to event_path(@event) }
       else
         format.html { 
-          @metro_areas, @states = setup_metro_area_choices_for(@event)
-          if params[:metro_area_id]
-            @metro_area_id = params[:metro_area_id].to_i
-            @state_id = params[:state_id].to_i
-            @country_id = params[:country_id].to_i
+          @neighborhoods = setup_neighborhood_choices_for(@event)
+          if params[:neighborhood_id]
+            @neighborhood_id = params[:neighborhood_id].to_i
+            @county_id = params[:county_id].to_i
           end
           render :action => "new"
         }
@@ -104,10 +103,10 @@ class EventsController < BaseController
 
   def update
     @event = Event.find(params[:id])
-    if params[:metro_area_id]
-      @event.metro_area = MetroArea.find(params[:metro_area_id])
+    if params[:neighborhood_id]
+      @event.neighborhood = Neighborhood.find(params[:neighborhood_id])
     else
-      @event.metro_area = nil
+      @event.neighborhood = nil
     end
         
     respond_to do |format|
@@ -115,11 +114,10 @@ class EventsController < BaseController
         format.html { redirect_to event_path(@event) }
       else
         format.html { 
-          @metro_areas, @states = setup_metro_area_choices_for(@event)
-          if params[:metro_area_id]
-            @metro_area_id = params[:metro_area_id].to_i
-            @state_id = params[:state_id].to_i
-            @country_id = params[:country_id].to_i
+          @neighborhoods = setup_neighborhood_choices_for(@event)
+          if params[:neighborhood_id]
+            @neighborhood_id = params[:neighborhood_id].to_i
+            @county_id = params[:county_id].to_i
           end
           render :action => "edit"
         }
@@ -127,8 +125,6 @@ class EventsController < BaseController
     end
   end
   
-  # DELETE /homepage_features/1
-  # DELETE /homepage_features/1.xml
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
@@ -147,41 +143,29 @@ class EventsController < BaseController
 
   protected
 
-  def setup_metro_area_choices_for(object)
-    metro_areas = states = []
-    if object.metro_area
+  def setup_neighborhood_choices_for(object)
+    neighborhoods = []
+    if object.neighborhood
       if object.is_a? Event
-        states = object.metro_area.country.states
-        if object.metro_area.state
-          metro_areas = object.metro_area.state.metro_areas.all(:order=>"name")
-        else
-          metro_areas = object.metro_area.country.metro_areas.all(:order=>"name")
-        end        
+        neighborhoods = object.neighborhood.county.neighborhoods.all(:order=>"name")  
       elsif object.is_a? User
-        states = object.country.states if object.country
-        if object.state
-          metro_areas = object.state.metro_areas.all(:order => "name")
-        else
-          metro_areas = object.country.metro_areas.all(:order => "name")
-        end
+        neighborhoods = object.county.neighborhoods.all(:order => "name")
       end
     end
-    return metro_areas, states
+    return neighborhoods
   end
 
   def setup_location_for(object)
-    metro_area_id = state_id = country_id = nil
-    if object.metro_area
-      metro_area_id = object.metro_area_id
+    neighborhood_id = county_id = nil
+    if object.neighborhood
+      neighborhood_id = object.neighborhood_id
       if object.is_a? Event
-        state_id = object.metro_area.state_id
-        country_id = object.metro_area.country_id
+        county_id = object.neighborhood.county_id
       elsif object.is_a? User
-        state_id = object.state_id
-        country_id = object.country_id
+        county_id = object.county_id
       end
     end
-    return metro_area_id, state_id, country_id
+    return neighborhood_id, county_id
   end
 
 end
