@@ -2,8 +2,10 @@
 
 #yui-main
   .yui-b
-    =render :partial => 'base/intro'
-    %iframe{:src => "http://www.google.com/calendar/embed?title=Upcoming%20Events&amp;showTabs=0&amp;showCalendars=0&amp;mode=AGENDA&amp;height=180&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=l11c2rg6hr0shrepi3dad74ibk%40group.calendar.google.com&amp;color=%23AB8B00&amp;ctz=America%2FNew_York", :style => "border-width:0", :width => 611, :height => 180, :frameborder => 0, :scrolling => "no"}
+    -box :class => "alt" do
+      %h3
+        =:upcoming_events.l
+      = render :partial => 'events/event', :collection => Event.all, :locals=>{:show_details_link=>true}
     -box :class => "hfeed" do 
       %h3
         =:recent_posts.l
