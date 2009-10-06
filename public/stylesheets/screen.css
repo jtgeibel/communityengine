@@ -43,11 +43,28 @@ span.localized {
   font-style: italic;
   color: red;
 }
+
+/* Some hacks to make right column wider */
+.yui-t6 .yui-b {
+float:right;
+width:28.4615em;*width:27.75em;}
+.yui-t6 #yui-main .yui-b {
+margin-right:29.4615em;*margin-right:28.725em;
+}
+.yui-t6 #yui-main{margin-right:-30em;/* IE: preserve layout at narrow widths */}
+
 /* =============================================== */
 /* 1. UNIVERSAL THINGS                             */
 /* =============================================== */
+
+body {
+/* font: 12px/150% "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif; */
+font: "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif;
+background:#fff url(/plugin_assets/community_engine/images/bg.png) repeat-x top center;
+}
+
 #doc2{
-color: #464337;
+color:#605f5f;
 }
 
 a{color: #06f;}
@@ -90,7 +107,11 @@ img.polaroid {
 /* 2. HEADER                                       */
 /* =============================================== */
 
-#hd{border-top: 4px solid #780000;}
+#hd{
+background:url(/plugin_assets/community_engine/images/bg_navbar.jpg) no-repeat;
+/*height:129px;
+position:relative;*/
+}
 
 #hd h1{float: left;}
 
@@ -125,7 +146,6 @@ background-position: left center;
 /* Navbar */
 
 #NavBar{
-background: #aba8a3 url(/plugin_assets/community_engine/images/bg_navbar.gif) repeat-x 0 0;
 border-top: 1px solid #d9d6d3;
 clear: both;
 }
@@ -220,27 +240,28 @@ background-color: #9ec500;
 /* 4. BOX and ALTBOX                               */
 /* =============================================== */
 
+.box h2, .box h3 {
+font-size: 207.8%;
+font-weight: normal;
+font-family:Georgia,Times,"Times New Roman",serif;
+margin-bottom: 1em;
+padding: 0 0 0.35em 0.9em;
+}
+
 .box{
 margin-bottom: 1em;
 }
 
 .box h2{
 margin-bottom: .5em;
-font-weight: bold;
-font-size: 153.9%;
 }
 
 .box h3{
-font-size: 123.1%;
-font-weight: bold;
-text-transform: uppercase;
-border-bottom: 1px solid #ffd735;
-margin:1.5em 0 1em 0;
+color:#bdbdbd; font-weight:normal;
+background: url(/plugin_assets/community_engine/images/h2_leaf.png) no-repeat bottom left;
 }
 
-.alt{
-border: 1px solid #94beff;
-background: #e1ecff;
+/*.alt{
 padding: 1em;
 }
 
@@ -248,13 +269,11 @@ padding: 1em;
 border: none;
 margin: 0 0 .5em 0;
 padding: .5em;
-background: #94beff;
-color: #38465b;
 }
 
 .first_alt {
-	margin-top:3.25em;
-	}
+margin-top:3.25em;
+}*/
 
 
 /* =============================================== */
