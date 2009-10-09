@@ -10,7 +10,7 @@ body {font: 12px/150% "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans
 /* changed width to 950px, using YUI for layout */
 /* #container {width:936px; margin:0 auto; text-align:left;} */
 
-#header {background:url(img/bg_header.jpg) no-repeat; height:129px; position:relative;}
+/* #header {background:url(img/bg_header.jpg) no-repeat; height:129px; position:relative;} */
 
 /*h1 {position:absolute; width:210px; height:108px; top:13px;}
 h1 a {display:block; text-indent:-999em; height:108px;}*/
@@ -32,8 +32,8 @@ h1 a {display:block; text-indent:-999em; height:108px;}*/
 
 .logout a {padding:3px 7px 5px 9px !important; margin-bottom:-5px;}
 
-#searchform {position:absolute; right:40px; top:76px; width:140px;}
-#searchform input {border:none; padding-top:5px;}
+/*#searchform {position:absolute; right:40px; top:76px; width:140px;}
+#searchform input {border:none; padding-top:5px;}*/
 
 #left_home {width:510px; float:left; padding:10px 10px 0 18px;}
 #right_home {width:380px; float:left; padding-top:15px;}
