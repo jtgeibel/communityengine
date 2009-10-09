@@ -59,7 +59,7 @@ margin-right:29.4615em;*margin-right:28.725em;
 
 body {
 /* font: 12px/150% "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif; */
-font: "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif;
+font-family: "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif;
 background:#fff url(/plugin_assets/community_engine/images/bg.png) repeat-x top center;
 }
 
@@ -111,15 +111,15 @@ img.polaroid {
 
 #hd{
 background:url(/plugin_assets/community_engine/images/bg_navbar.jpg) no-repeat;
-/*height:129px;
-position:relative;*/
+height:129px;
+position:relative;
 }
 #hd h1 {position:absolute; width:210px; height:108px; top:13px;}
 #hd h1 a {display:block; text-indent:-999em; height:108px;}
 
 
-#header h2 {padding-top:9px; font-size:125%; position:relative; width:182px; right:10px; top:0; height:34px; text-align:right; z-index:9;}
-#header h2 a {font-weight:normal; padding-right:20px;}
+#hd h2 {padding-top:9px; font-size:125%; float:right; width:182px; height:34px; text-align:right; z-index:9;}
+#hd h2 a {font-weight:normal; padding-right:20px;}
 
 #hd h2#newmail{
 float: right;
@@ -131,26 +131,17 @@ background-repeat: no-repeat;
 background-position: left center;
 }
 
+#NavBar, #hd h2, #user-menu-tip, #bd h2, #bd a, #bd h3 {font-family:Georgia,Times,"Times New Roman",serif;}
+#NavBar li a, #hd h2 a, #user-menu-tip a {text-decoration:none; color:black;}
+
 /* Navbar */
 
-#NavBar {position:relative; left:235px; top:47px; font-size:150%; text-transform:uppercase; list-style:none; }
+#NavBar {position:absolute; top:47px; font-size:150%; text-transform:uppercase; list-style:none; padding-left: 235px;}
 #NavBar li {float:left; padding-left:17px;}
 
 #NavBar ul, #NavBar ul li{float: left;}
 
-#NavBar ul li a{
-display: block;
-font-size: 108%;
-padding: 15px 10px;
-text-transform: uppercase;
-font-weight: bold;
-border-right: 1px solid #fff;
-color: #464337;
-text-decoration: none;
-}
-
 #NavBar ul li#active a, #NavBar ul li.current a{
-background: #fff;
 text-decoration: none !important;
 }
 
