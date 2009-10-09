@@ -18,8 +18,8 @@ h1 a {display:block; text-indent:-999em; height:108px;}*/
 /*#nav {position:absolute; left:235px; top:47px; font-size:150%; text-transform:uppercase; list-style:none; }
 #nav li {float:left; padding-left:17px;}*/
 
-#header h2 {background:url(img/example_avatar.jpg) no-repeat; padding-top:9px; font-size:125%; position:absolute; width:182px; right:10px; top:0; height:34px; text-align:right; z-index:9;}
-#header h2 a {font-weight:normal; padding-right:20px;}
+/*#header h2 {background:url(img/example_avatar.jpg) no-repeat; padding-top:9px; font-size:125%; position:absolute; width:182px; right:10px; top:0; height:34px; text-align:right; z-index:9;}
+#header h2 a {font-weight:normal; padding-right:20px;}*/
 
 .avatar_mask {position:absolute; z-index:10; top:27px; left:744px; }
 
@@ -71,8 +71,8 @@ h1 a {display:block; text-indent:-999em; height:108px;}*/
 
 /* Typography */
 
-#nav, #header h2, #user-menu-tip, #content h2, #content a, #content h3 {font-family:Georgia,Times,"Times New Roman",serif;}
-#nav li a, #header h2 a, #user-menu-tip a {text-decoration:none; color:black;}
+/*#nav, #header h2, #user-menu-tip, #content h2, #content a, #content h3 {font-family:Georgia,Times,"Times New Roman",serif;}
+#nav li a, #header h2 a, #user-menu-tip a {text-decoration:none; color:black;}*/
 
 #user-menu-tip a {font-size:125%;}
 
