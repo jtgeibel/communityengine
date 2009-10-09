@@ -1,27 +1,25 @@
 /* CSS by Nathan Swartz in the Colorado Autumn */
 
-body, h1, h2, h3, h4, h5, h6, form, input, fieldset, p, blockquote, ul, ol, li {margin:0; padding:0;}
-
+/* Part of framework */
+/* body, h1, h2, h3, h4, h5, h6, form, input, fieldset, p, blockquote, ul, ol, li {margin:0; padding:0;} */
 body {font: 12px/150% "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif; color:#605f5f; text-align:center; background:#fff url(img/bg.png) repeat-x top center; }
-
-img, fieldset {border:none;}
-
-input, button {-moz-border-radius:5px; -webkit-border-radius:5px;}
+/* img, fieldset {border:none;} */
+/* input, button {-moz-border-radius:5px; -webkit-border-radius:5px;} */
 
 /* Positioning and Functionality */
+/* changed width to 950px, using YUI for layout */
+/* #container {width:936px; margin:0 auto; text-align:left;} */
 
-#container {width:936px; margin:0 auto; text-align:left;}
+/* #header {background:url(img/bg_header.jpg) no-repeat; height:129px; position:relative;} */
 
-#header {background:url(img/bg_header.jpg) no-repeat; height:129px; position:relative;}
+/*h1 {position:absolute; width:210px; height:108px; top:13px;}
+h1 a {display:block; text-indent:-999em; height:108px;}*/
 
-h1 {position:absolute; width:210px; height:108px; top:13px;}
-h1 a {display:block; text-indent:-999em; height:108px;}
+/*#nav {position:absolute; left:235px; top:47px; font-size:150%; text-transform:uppercase; list-style:none; }
+#nav li {float:left; padding-left:17px;}*/
 
-#nav {position:absolute; left:235px; top:47px; font-size:150%; text-transform:uppercase; list-style:none; }
-#nav li {float:left; padding-left:17px;}
-
-#header h2 {background:url(img/example_avatar.jpg) no-repeat; padding-top:9px; font-size:125%; position:absolute; width:182px; right:10px; top:0; height:34px; text-align:right; z-index:9;}
-#header h2 a {font-weight:normal; padding-right:20px;}
+/*#header h2 {background:url(img/example_avatar.jpg) no-repeat; padding-top:9px; font-size:125%; position:absolute; width:182px; right:10px; top:0; height:34px; text-align:right; z-index:9;}
+#header h2 a {font-weight:normal; padding-right:20px;}*/
 
 .avatar_mask {position:absolute; z-index:10; top:27px; left:744px; }
 
@@ -34,8 +32,8 @@ h1 a {display:block; text-indent:-999em; height:108px;}
 
 .logout a {padding:3px 7px 5px 9px !important; margin-bottom:-5px;}
 
-#searchform {position:absolute; right:40px; top:76px; width:140px;}
-#searchform input {border:none; padding-top:5px;}
+/*#searchform {position:absolute; right:40px; top:76px; width:140px;}
+#searchform input {border:none; padding-top:5px;}*/
 
 #left_home {width:510px; float:left; padding:10px 10px 0 18px;}
 #right_home {width:380px; float:left; padding-top:15px;}
@@ -73,8 +71,8 @@ h1 a {display:block; text-indent:-999em; height:108px;}
 
 /* Typography */
 
-#nav, #header h2, #user-menu-tip, #content h2, #content a, #content h3 {font-family:Georgia,Times,"Times New Roman",serif;}
-#nav li a, #header h2 a, #user-menu-tip a {text-decoration:none; color:black;}
+/*#nav, #header h2, #user-menu-tip, #content h2, #content a, #content h3 {font-family:Georgia,Times,"Times New Roman",serif;}
+#nav li a, #header h2 a, #user-menu-tip a {text-decoration:none; color:black;}*/
 
 #user-menu-tip a {font-size:125%;}
 
