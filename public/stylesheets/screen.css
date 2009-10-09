@@ -117,11 +117,9 @@ position:relative;*/
 #hd h1 {position:absolute; width:210px; height:108px; top:13px;}
 #hd h1 a {display:block; text-indent:-999em; height:108px;}
 
-#hd h2{
-float: right;
-font-size: 138.5%;
-margin-top: 25px;
-}
+
+#header h2 {padding-top:9px; font-size:125%; position:relative; width:182px; right:10px; top:0; height:34px; text-align:right; z-index:9;}
+#header h2 a {font-weight:normal; padding-right:20px;}
 
 #hd h2#newmail{
 float: right;
