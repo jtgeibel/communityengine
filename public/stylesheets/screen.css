@@ -187,21 +187,6 @@ border: none;
 /* 3. WELCOME                                      */
 /* =============================================== */
 
-#signup .box, #welcome .box{
-background: #fff1b2;
-margin-top: 1em;
-padding: 1em;
-border-bottom: 2px solid #ffd735;
-border-top: 1px solid #ffd735;
-}
-
-#signup .box h2, #welcome .box h2{
-font-size: 197%;
-margin-bottom:.5em;
-}
-
-#signup .box h2 a{color: #464337;}
-
 #welcome .box p, #signup .box p{
 font-size: 108%;}
 
@@ -256,7 +241,7 @@ margin-bottom: 1em;
 margin-bottom: .5em;
 }
 
-.box h3{
+.box h2, .box h3{
 color:#bdbdbd; font-weight:normal;
 background: url(/plugin_assets/community_engine/images/h2_leaf.png) no-repeat bottom left;
 }
