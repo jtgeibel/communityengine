@@ -63,6 +63,8 @@ font: "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif;
 background:#fff url(/plugin_assets/community_engine/images/bg.png) repeat-x top center;
 }
 
+input, button {-moz-border-radius:5px; -webkit-border-radius:5px;}
+
 #doc2{
 color:#605f5f;
 }
@@ -112,20 +114,8 @@ background:url(/plugin_assets/community_engine/images/bg_navbar.jpg) no-repeat;
 /*height:129px;
 position:relative;*/
 }
-
-#hd h1{float: left;}
-
-#hd h1 a{
-font-size: 182%;
-font-weight: bold;
-text-transform: uppercase;
-text-decoration: none;
-display: block;
-margin: 20px 0 10px 0;
-color: #464337;
-}
-
-#hd h1 a:hover{text-decoration: underline;}
+#hd h1 {position:absolute; width:210px; height:108px; top:13px;}
+#hd h1 a {display:block; text-indent:-999em; height:108px;}
 
 #hd h2{
 float: right;
@@ -145,10 +135,8 @@ background-position: left center;
 
 /* Navbar */
 
-#NavBar{
-border-top: 1px solid #d9d6d3;
-clear: both;
-}
+#NavBar {position:relative; left:235px; top:47px; font-size:150%; text-transform:uppercase; list-style:none; }
+#NavBar li {float:left; padding-left:17px;}
 
 #NavBar ul, #NavBar ul li{float: left;}
 
