@@ -1012,7 +1012,7 @@ table.poll {
       padding-right: 2px; }
 
 /* User Menu Dropdown*/
-#user-menu {
+/*#user-menu {
 	padding-right: 28px;
 	background: url(/plugin_assets/community_engine/images/drop_down_button.png) no-repeat right bottom;
 	display: block;
@@ -1045,4 +1045,4 @@ table.poll {
 .icon_row a img {
    border:0;
    vertical-align:middle;
-}
+}*/
