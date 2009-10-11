@@ -2,7 +2,7 @@
 
 #yui-main
   .yui-b
-    -box :class => "alt" do
+    -#box :class => "alt" do
       %h3
         =:upcoming_events.l
       = render :partial => 'events/event', :collection => Event.all, :locals=>{:show_details_link=>true}
