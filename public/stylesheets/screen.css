@@ -817,6 +817,7 @@ div.user_list div.vcard {
 /* CATEGORY PAGES */
 .box h3 ul.subnav {
 	display:inline;
+	float:right;
 	font-size: .7em;
 	font-weight:normal;
 	text-transform:none;
@@ -825,7 +826,7 @@ div.user_list div.vcard {
 	ul.subnav li {
 		display:inline;}
 		ul.subnav li a.active {
-			color:#000;
+			color: #BDBDBD;
 			text-decoration:none;}
 
 
