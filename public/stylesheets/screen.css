@@ -242,9 +242,16 @@ margin-top:3.25em;
 /* 5. BODY                                         */
 /* =============================================== */
 
-/* blog entry */
+#bd li {margin:5px 0;}
+#bd a {font-size:120%; color:#c5ae0c; font-weight:normal;}
+#bd img {border:1px solid #c0bfbf; padding:2px;}
+.hentry h4, .hentry h4 a {font-size:200%; color:#c5ae0c; font-weight:normal; margin-bottom:10px; line-height:100%;text-decoration:none;}
+.hentry h5 img {float:left; margin:0 10px 10px 0;}
 
-.hentry{
+.post_tools {list-style:none; margin:10px 0; width:100%; height:40px;}
+.post_tools li {float:left; padding-left:20px; margin-right:5px !important;}
+.post_tools a {color:#9c9c9c !important; font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif !important; font-size:100% !important; text-decoration:none;}
+/*.hentry{
 margin: 0 0 1em 0;
 }
 
@@ -268,27 +275,27 @@ color: #464337;
 
 .hentry .vcard{
 float: left;
-width: 13.8461em; /* about 180px */
-*width:  13.5em; /* for IE */
+width: 13.8461em;
+*width:  13.5em; 
 }
 
 div.main div.vcard{
-width: 9.2307em; /* about 120px */
-*width:  9em; /* for IE */
+width: 9.2307em;
+*width:  9em; 
 }
 
 .entry-content{
-margin-left:  15.3846em; /* about 200px */
-*margin-left:  15em; /* for IE */
+margin-left:  15.3846em; 
+*margin-left:  15em; 
 }
 
 div.main div.entry-content{
-margin-left:  10.4769em; /* about 140px */
-*margin-left:  10.5em; /* for IE */
+margin-left:  10.4769em; 
+*margin-left:  10.5em; 
 }
 
 .page-content, .event-content{
-margin-left: 0px; /* Use formatting for blog post except for left margin */
+margin-left: 0px; 
 }
 
 .hentry .vcard h5{
@@ -327,26 +334,27 @@ background-repeat: no-repeat;
 font-size: 130%;
 font-weight: bold;
 padding:0 0 3px 0;
-}
+}*/
 
-.hentry .vcard ul li.update{background-image: url(/plugin_assets/community_engine/images/icons/date.png) }
-.hentry .vcard ul li.view{background-image: url(/plugin_assets/community_engine/images/icons/page_white_magnify.png) }
-.hentry .vcard ul li.comments{background-image: url(/plugin_assets/community_engine/images/icons/comments.png) }
-.hentry .vcard ul li.msg{background-image: url(/plugin_assets/community_engine/images/icons/email_go.png) }
-.hentry .vcard ul li.addfriend{background-image: url(/plugin_assets/community_engine/images/icons/user_add.png) }
-.hentry .vcard ul li.print{background-image: url(/plugin_assets/community_engine/images/icons/printer.png) }
-.hentry .vcard ul li.email{background-image: url(/plugin_assets/community_engine/images/icons/user_go.png) }
+/*  --- Eventually I should make these follow Nathans scheme i_ for icons --- */
+.hentry .vcard ul li.update{background: url(/plugin_assets/community_engine/images/icons/date.png) no-repeat }
+.hentry .vcard ul li.view{background: url(/plugin_assets/community_engine/images/icons/page_white_magnify.png) no-repeat }
+.hentry .vcard ul li.comments{background: url(/plugin_assets/community_engine/images/icons/comments.png) no-repeat }
+.hentry .vcard ul li.msg{background: url(/plugin_assets/community_engine/images/icons/email_go.png) no-repeat }
+.hentry .vcard ul li.addfriend{background: url(/plugin_assets/community_engine/images/icons/user_add.png) no-repeat }
+.hentry .vcard ul li.print{background: url(/plugin_assets/community_engine/images/icons/printer.png) no-repeat }
+.hentry .vcard ul li.email{background: url(/plugin_assets/community_engine/images/icons/user_go.png) no-repeat }
 .hentry .vcard ul li.share{
-/*	background-image: url(/plugin_assets/community_engine/images/icons/group_go.png) */
+/*	background: url(/plugin_assets/community_engine/images/icons/group_go.png) */
 	padding-left:0;
 	}
-.hentry .vcard ul li.tags{background-image: url(/plugin_assets/community_engine/images/icons/tag_blue.png) }
-.hentry .vcard ul li.skills{background-image: url(/plugin_assets/community_engine/images/icons/wrench.png) }
-.hentry .vcard ul li.geo{background-image: url(/plugin_assets/community_engine/images/icons/world.png) }
-.hentry .vcard ul li.edit{background-image: url(/plugin_assets/community_engine/images/icons/post.png) }
-.hentry .vcard ul li.delete{background-image: url(/plugin_assets/community_engine/images/icons/delete.png) }
+.hentry .vcard ul li.tags{background: url(/plugin_assets/community_engine/images/icons/tag_blue.png) no-repeat }
+.hentry .vcard ul li.skills{background: url(/plugin_assets/community_engine/images/icons/wrench.png) no-repeat }
+.hentry .vcard ul li.geo{background: url(/plugin_assets/community_engine/images/icons/world.png) no-repeat }
+.hentry .vcard ul li.edit{background: url(/plugin_assets/community_engine/images/icons/post.png) no-repeat }
+.hentry .vcard ul li.delete{background: url(/plugin_assets/community_engine/images/icons/delete.png) no-repeat }
 
-.entry-content h6{
+/*.entry-content h6{
 border-bottom: 1px dotted #a2a19b;
 border-top: 1px dotted #a2a19b;
 text-align: right;
@@ -363,9 +371,9 @@ padding-left: 20px;
 padding: 2px 2px 2px 20px;
 }
 
-.entry-content h6 a:hover{text-decoration: underline;}
+.entry-content h6 a:hover{text-decoration: underline;}*/
 
-
+.entry-content {clear: both;}
 /* brings back styles for entry elements */
 .entry-content blockquote, .entry-content ul, .entry-content ol {margin:1em;}
 .entry-content ol, .entry-content ul{margin-left:2em;}
