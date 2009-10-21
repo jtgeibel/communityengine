@@ -6,8 +6,9 @@
     %h4.entry-title{:id=>"post_#{ post.id}"}
       = link_to post.title, user_post_path(post.user, post), :rel => 'bookmark'
 
+    %ul.post_tool_header
+      %li.i_member=link_to post.user.login, user_path(post.user)
     %ul.post_tools
-      %li.fn=link_to post.user.login, user_path(post.user)
       %li.update
         %a{:href=>"#{user_post_path(post.user, post)}", :rel=>"bookmark"}
           %abbr.published{:title=>"#{post.published_at}"}= post.published_at_display("%b %d")
@@ -23,6 +24,4 @@
     = post.post
     
     = render :partial => 'polls/excerpt', :locals => {:poll => post.poll} if post.poll
-    
-    %h6=link_to :read_more.l, user_post_path(post.user, post), :rel=> 'bookmark'
-  
+
