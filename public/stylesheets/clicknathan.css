@@ -35,10 +35,10 @@ h1 a {display:block; text-indent:-999em; height:108px;}*/
 /*#searchform {position:absolute; right:40px; top:76px; width:140px;}
 #searchform input {border:none; padding-top:5px;}*/
 
-#left_home {width:510px; float:left; padding:10px 10px 0 18px;}
+/*#left_home {width:510px; float:left; padding:10px 10px 0 18px;}
 #right_home {width:380px; float:left; padding-top:15px;}
 #left_profile {width:292px; float:left; padding:10px 0;}
-#right_profile {width:621px; float:left; padding:10px 0 0 23px;}
+#right_profile {width:621px; float:left; padding:10px 0 0 23px;}*/
 
 #activity {margin-bottom:18px;}
 
@@ -80,9 +80,9 @@ h1 a {display:block; text-indent:-999em; height:108px;}*/
 #left_profile h2, #commentbox p {font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif !important; font-size:140% !important; background:none; padding:20px 0 0 0 !important; color:#605f5f;}
 #commentbox p {padding-left:10px !important;}
 
-#content p {margin:5px 0;}
+/*#content p {margin:5px 0;}*/
 
-#content ul, #content ol {margin:20px 0 20px 30px;}
+/*#content ul, #content ol {margin:20px 0 20px 30px;}*/
 
 #activity ul {list-style:none; margin-left:24px;}
 /*#content li {margin:5px 0;}*/

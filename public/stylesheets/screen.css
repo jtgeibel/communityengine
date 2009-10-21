@@ -243,14 +243,22 @@ margin-top:3.25em;
 /* =============================================== */
 
 #bd li {margin:5px 0;}
-#bd a {font-size:120%; color:#c5ae0c; font-weight:normal;}
+#bd ul, #bd ol {margin:20px 0 20px 30px;}
+#bd p {margin:5px 0;}
+
+#bd a {font-size:110.8%; color:#c5ae0c; font-weight:normal;}
 #bd img {border:1px solid #c0bfbf; padding:2px;}
-.hentry h4, .hentry h4 a {font-size:200%; color:#c5ae0c; font-weight:normal; margin-bottom:10px; line-height:100%;text-decoration:none;}
+.hentry h4, .hentry h4 a {font-size:184.6%; color:#c5ae0c; font-weight:normal; margin-bottom:10px; line-height:100%;text-decoration:none;}
 .hentry h5 img {float:left; margin:0 10px 10px 0;}
 
-.post_tools {list-style:none; margin:10px 0; width:100%; height:40px;}
-.post_tools li {float:left; padding-left:20px; margin-right:5px !important;}
-.post_tools a {color:#9c9c9c !important; font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif !important; font-size:100% !important; text-decoration:none;}
+#bd .post_tool_header {margin: 0;}
+#bd .post_tool_header li {padding-left: 20px;display:inline;}
+#bd .post_tools {margin:10px 0; width:100%; height:40px;}
+#bd .post_tools li {float:left; padding-left:20px; margin-right:8px !important;}
+#bd .post_tools a, .post_tool_header a {color:#9c9c9c !important; font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif !important; font-size:100% !important; text-decoration:none;}
+
+.i_member{background: url(/plugin_assets/community_engine/images/icons/user.png) no-repeat;}
+
 /*.hentry{
 margin: 0 0 1em 0;
 }
@@ -357,6 +365,7 @@ padding:0 0 3px 0;
 .hentry .vcard ul li.geo{background: url(/plugin_assets/community_engine/images/icons/world.png) no-repeat }
 .hentry .vcard ul li.edit{background: url(/plugin_assets/community_engine/images/icons/post.png) no-repeat }
 .hentry .vcard ul li.delete{background: url(/plugin_assets/community_engine/images/icons/delete.png) no-repeat }
+
 
 /*.entry-content h6{
 border-bottom: 1px dotted #a2a19b;
