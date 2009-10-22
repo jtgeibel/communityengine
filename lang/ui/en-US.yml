@@ -98,7 +98,7 @@ en:
   #en: all_posts_tagged: All posts tagged {{tag_name}}
   all_posts_tagged: "All posts tagged {{tag_name}}"
   #en: all_tags: All tags
-  all_tags: All tags
+  all_tags: All Tags
   #en: all_users_tagged: All users tagged {{tag_name}}
   all_users_tagged: "All users tagged {{tag_name}}"
   #en: already_have_an_account: Already have an account?
@@ -1054,13 +1054,13 @@ en:
   #en: searching_for: Searching for
   searching_for: Searching for
   #en: see_all: SEE ALL
-  see_all: SEE ALL
+  see_all: See All
   #en: see_all_activity: See all activity
   see_all_activity: See all activity
   #en: see_all_events: See all events
   see_all_events: See all events
   #en: see_all_recent_posts: See all recent posts
-  see_all_recent_posts: See all recent posts
+  see_all_recent_posts: See All Recent Posts
   #en: see_you_back_here_in_a_short_while: See you back here in a short while.
   see_you_back_here_in_a_short_while: See you back here in a short while.
   #en: select_images_to_upload: Select Images to Upload
