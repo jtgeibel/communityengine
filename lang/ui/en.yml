@@ -1236,7 +1236,7 @@ en:
   #en: singular_posts: "{{count}} post"
   singular_posts: "{{count}} post"
   #en: site_members: "{{site}} members"
-  site_members: "{{site}} members"
+  site_members: "{{site}} Members"
   #en: skill_was_successfully_created: Skill was successfully created.
   skill_was_successfully_created: Skill was successfully created.
   #en: skills: Skills
