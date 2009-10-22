@@ -206,7 +206,7 @@ background-color: #9ec500;
 font-size: 207.8%;
 font-weight: normal;
 font-family:Georgia,Times,"Times New Roman",serif;
-margin-bottom: 1em;
+margin-bottom: 0.5em;
 padding: 0 0 0.35em 0.9em;
 }
 
@@ -248,6 +248,8 @@ margin-top:3.25em;
 
 #bd a {font-size:110.8%; color:#c5ae0c; font-weight:normal;}
 #bd img {border:1px solid #c0bfbf; padding:2px;}
+
+.hentry {margin-bottom: 1em;}
 .hentry h4, .hentry h4 a {font-size:184.6%; color:#c5ae0c; font-weight:normal; margin-bottom:10px; line-height:100%;text-decoration:none;}
 .hentry h5 img {float:left; margin:0 10px 10px 0;}
 
@@ -417,18 +419,13 @@ background: url(/plugin_assets/community_engine/images/icons/tag_blue.png) no-re
 /* 6. SIDEBAR                                      */
 /* =============================================== */
 
-.list{
+ul.list {
+margin-top: 0 !important;
 }
 
 .list li{
-padding:3px 0;
-border-bottom: 1px dotted #a2a19b;
-}
-
-.checks li, .page li{
 padding-left: 20px;
 background-color: transparent;
-background-image: url(/plugin_assets/community_engine/images/icons/accept.png);
 background-repeat: no-repeat;
 background-position: left center;
 }
@@ -477,17 +474,14 @@ dl.vcard dd.member{background-image: url(/plugin_assets/community_engine/images/
 dl.vcard dd.post{background-image: url(/plugin_assets/community_engine/images/icons/page_white.png);}
 dl.vcard dd.rss{background-image: url(/plugin_assets/community_engine/images/icons/rss.png);}
 
-h6.all{margin:.5em 0;}
 
-h6.all a{
-font-size: 85%;
-font-weight: bold;
-text-transform: uppercase;
-background: transparent url(/plugin_assets/community_engine/images/icons/add.png) no-repeat left center;
-padding:3px 0 3px 20px;
-color: #379d00;
+h6.all {background:url(/plugin_assets/community_engine/images/lowbar.jpg) repeat-x; height:19px; padding:5px; text-align:right; margin-bottom:20px;}
+h6.all a {
+color:#5f5f5f !important;
+font-size:125% !important;
+background:url(/plugin_assets/community_engine/images/icons/add.png) no-repeat right center;
+padding-right:20px;
 }
-
 
 /* Main Form ========================= */
 
