@@ -279,9 +279,10 @@ class User < ActiveRecord::Base
     neighborhood && neighborhood.name || ""
   end
   
-#  def full_location
-#    "#{neighborhood.name if self.neighborhood}#{" , #{self.county.name}" if self.county}"
-#  end
+ def full_location
+   location
+   #"#{neighborhood.name if self.neighborhood}#{" , #{self.county.name}" if self.county}"
+ end
   
   def reset_password
      new_password = newpass(8)
