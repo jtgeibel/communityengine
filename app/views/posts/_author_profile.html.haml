@@ -7,8 +7,8 @@
       = link_to user.login, user_path(user), :class => 'url'
       = " <small>(" + :featured_writer.l + ")</small>" if user.featured_writer?        
     %dd
-    - if user.description
-      = truncate_words( user.description, 12, '...')
+      - if user.description
+        = truncate_words( user.description, 12, '...')
     %dd.member
       =user.created_at.strftime(:member_since.l + ": %m/%d/%y")
     %dd.post

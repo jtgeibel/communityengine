@@ -2,25 +2,15 @@
 - @section = @user.eql?(current_user) ? 'my_profile' : 'users'
 - @sidebar_left = true
 
-
-- if @is_current_user and @user.vendor? and (@user.offerings.empty? or @user.description.nil? )
-  %p
-    ? Hey, you're a
-    = AppConfig.community_name
-    Pro! You should
-    = link_to :update_your_profile.l, edit_user_path(@user)
-    \! Add your skills, contact info and Web site.
-
-
 .yui-b
   -box do 
     = render :partial => 'profile_user_info_sidebar', :locals => {:user => @user}
 
-  - if @user.description
-    -box :id => "about_me" do
-      %h3
-        =:about_me.l
-      %p= @user.description
+  - unless @photos.empty?
+    -box :class => 'alt', :id => "photos" do
+      %h3=:photos.l
+      - @photos.each do |photo|
+        = link_to image_tag( photo.public_filename(:thumb), :class => "polaroid"), user_photo_path(@user, photo)
 
   -box :class => 'alt', :id => 'friends' do
     %h3
@@ -70,32 +60,13 @@
 
 #yui-main
   .yui-b
-    - if @photos.empty? and @recent_posts.empty?
-      -box :class => "alt first_alt" do 
-        %h3= :small_profile.l :user => @user.login
+    -box :id => "about_me" do
+      %h3
+        = link_to @user.login, user_path(@user)
+        = " <small>(#{:featured_writer.l})</small>" if @user.featured_writer?
 
-    - unless @photos.empty?
-      -box :id => "photos" do
-        %h3=:photos.l
-        - @photos.each do |photo|
-          = link_to image_tag( photo.public_filename(:thumb), :class => "polaroid"), user_photo_path(@user, photo)
-
-        %h6.all.right= link_to :view_all_my_photos.l, user_photos_path(@user)
-        = "#{link_to(:add_a_photo.l, new_user_photo_path(@user))}" if @is_current_user
-
-    - unless @recent_posts.empty?
-      -box :id => "posts" do
-        %h3=:recent_blog_posts.l
-        = render :partial => 'posts/post', :collection => @recent_posts
-        %h6.right.all= link_to :view_my_blog.l, user_posts_path(@user)
-
-    - unless @clippings.empty?
-      -box :id => "clippings" do
-        %h3=:clippings.l
-        - @clippings.each do |clipping|
-          %a{"href"=>"#{h user_clipping_url(@user, clipping)}"}
-            %img.clipping.polaroid{"src"=>"#{h clipping.image_uri(:thumb)}", :width => '100', :height => '100'}
-        %h6.all.right= link_to :view_all_my_clippings.l, user_clippings_path(@user)
+      - if @user.description
+        %p= @user.description
 
     -box :class => 'hfeed comments', :id => 'comments' do
       %h3=:profile_comments.l

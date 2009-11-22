@@ -11,10 +11,6 @@
     = link_to( "&raquo; #{:assign_role.l}: #{@user.moderator? ? :member.l : :moderator.l}", toggle_moderator_user_path(@user), {:method => :put} )
 
 -box :class => 'hentry', :id => 'profile_details' do
-  %h3
-    = link_to @user.login, user_path(@user)
-    = " <small>(#{:featured_writer.l})</small>" if @user.featured_writer?
-
   .centered
     - if @is_current_user
       - if @user.avatar
