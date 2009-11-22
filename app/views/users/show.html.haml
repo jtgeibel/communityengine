@@ -7,13 +7,13 @@
   = render :partial => 'profile_user_info_sidebar', :locals => {:user => @user}
 
   - unless @photos.empty?
-    -box :class => 'alt', :id => "photos" do
-      %h3=:photos.l
+    -box :class => 'alt', :id => "profile_photos" do
+      %h3.no_leaf=:photos.l
       - @photos.each do |photo|
-        = link_to image_tag( photo.public_filename(:thumb), :class => "polaroid"), user_photo_path(@user, photo)
+        = link_to image_tag( photo.public_filename(:thumb), :class => "polaroid", :width => "88", :height => "88"), user_photo_path(@user, photo)
 
   -box :class => 'alt', :id => 'friends' do
-    %h3
+    %h3.no_leaf
       =:my_friends.l
       = link_to "(#{@friend_count})", accepted_user_friendships_path(@user) if @friend_count > 5
     %p
@@ -64,6 +64,26 @@
 
       - if @user.description
         %p= @user.description
+
+    -box :class => 'hentry alt', :id => "profile_details" do
+      %h3.no_leaf=:my_details.l
+      .vcard.author
+        %ul
+          %li.update
+            %a{:href=>"#{user_path(@user)}", :rel=>"bookmark"}
+              %abbr.published{:title=>"#{@user.created_at}"}
+                = :member_since.l + @user.created_at.strftime(": %m/%d/%y")          
+          %li.view
+            =:profile_views.l
+            = "(#{@user.view_count})"
+          - if @user.offerings.any?
+            %li.skills= :my_skills.l+": #{@user.offerings.collect{|o| link_to o.skill.name, skill_url(o.skill) }.join(', ')}"
+          - if @user.tags.any?
+            %li.tags= :my_tags.l+": #{@user.tags.collect{|t| link_to t.name, tag_url(t) }.join(", ")}"
+          - if @user.neighborhood
+            %li.geo= link_to(@user.full_location, users_path(:neighborhood_id => @user.neighborhood_id, :county_id => @user.county_id ) ) 
+          - if current_user
+            %li.compose= link_to(:send_me_a_message.l, new_user_message_path(current_user, :to=>@user))
 
     -box :class => 'hfeed comments', :id => 'comments' do
       %h3=:profile_comments.l

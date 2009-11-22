@@ -223,6 +223,8 @@ color:#bdbdbd; font-weight:normal;
 background: url(/plugin_assets/community_engine/images/h2_leaf.png) no-repeat bottom left;
 }
 
+h3.no_leaf, #commentbox p {font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif !important; font-size:140% !important; background:none; padding:20px 0 0 0 !important; color:#605f5f;}}
+
 /*.alt{
 padding: 1em;
 }
@@ -435,6 +437,10 @@ background-position: left center;
 .page li{background-image:url(/plugin_assets/community_engine/images/icons/page_white.png)}
 
 /* user list */
+#active_users dl.vcard dd{
+margin-left: 110px;
+}
+
 dl.vcard{
 margin-bottom: 1em;
 }
