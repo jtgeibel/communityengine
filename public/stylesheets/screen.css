@@ -351,6 +351,7 @@ padding:0 0 3px 0;
 }*/
 
 /*  --- Eventually I should make these follow Nathans scheme i_ for icons --- */
+.hentry .vcard ul li {padding-left:20px;}
 .hentry .vcard ul li.update{background: url(/plugin_assets/community_engine/images/icons/date.png) no-repeat }
 .hentry .vcard ul li.view{background: url(/plugin_assets/community_engine/images/icons/page_white_magnify.png) no-repeat }
 .hentry .vcard ul li.comments{background: url(/plugin_assets/community_engine/images/icons/comments.png) no-repeat }
@@ -968,7 +969,7 @@ ul.message_nav li {
 ul.message_nav li.inbox_new {background-image: url(/plugin_assets/community_engine/images/icons/email_open.png);}
 ul.message_nav li.inbox {background-image: url(/plugin_assets/community_engine/images/icons/email.png);}
 ul.message_nav li.sent {background-image: url(/plugin_assets/community_engine/images/icons/email_go.png);}
-li.compose {background-image: url(/plugin_assets/community_engine/images/icons/email_edit.png);}
+li.compose {background: url(/plugin_assets/community_engine/images/icons/email_edit.png) no-repeat;}
 .messages .photo a img{
 	float: left;
 	display: block;
