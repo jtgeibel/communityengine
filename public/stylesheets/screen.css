@@ -223,6 +223,8 @@ color:#bdbdbd; font-weight:normal;
 background: url(/plugin_assets/community_engine/images/h2_leaf.png) no-repeat bottom left;
 }
 
+h3.no_leaf, #commentbox p {font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif !important; font-size:140% !important; background:none; padding:20px 0 0 0 !important; color:#605f5f;}}
+
 /*.alt{
 padding: 1em;
 }
@@ -351,6 +353,7 @@ padding:0 0 3px 0;
 }*/
 
 /*  --- Eventually I should make these follow Nathans scheme i_ for icons --- */
+.hentry .vcard ul li {padding-left:20px;}
 .hentry .vcard ul li.update{background: url(/plugin_assets/community_engine/images/icons/date.png) no-repeat }
 .hentry .vcard ul li.view{background: url(/plugin_assets/community_engine/images/icons/page_white_magnify.png) no-repeat }
 .hentry .vcard ul li.comments{background: url(/plugin_assets/community_engine/images/icons/comments.png) no-repeat }
@@ -434,13 +437,16 @@ background-position: left center;
 .page li{background-image:url(/plugin_assets/community_engine/images/icons/page_white.png)}
 
 /* user list */
+#active_users dl.vcard dd{
+margin-left: 110px;
+}
+
 dl.vcard{
 margin-bottom: 1em;
 }
 
 dl.vcard dt.photo{
 float: left;
-width: 100px;
 margin: 0;
 }
 
@@ -464,7 +470,6 @@ font-weight: bold;
 
 dl.vcard dd.member, dl.vcard dd.post, dl.vcard dd.rss{
 padding: 2px 0 2px 20px;
-border-top: 1px dotted #a2a19b;
 background-position: left center;
 background-repeat: no-repeat;
 background-color: transparent;
@@ -827,11 +832,10 @@ div.user_list div.vcard {
 	margin: 0 12px 15px 0;
 	}
 	
-/*USER PROFILE SIDEBAR*/
-#profile_details div.vcard{
-	width: 100%;}
-	#profile_details .vcard ul{
-		margin-left: 0px;}
+/*USER PROFILE*/
+#profile_details {
+float: right;
+}
 
 /* CATEGORY PAGES */
 .box h3 ul.subnav {
@@ -968,7 +972,7 @@ ul.message_nav li {
 ul.message_nav li.inbox_new {background-image: url(/plugin_assets/community_engine/images/icons/email_open.png);}
 ul.message_nav li.inbox {background-image: url(/plugin_assets/community_engine/images/icons/email.png);}
 ul.message_nav li.sent {background-image: url(/plugin_assets/community_engine/images/icons/email_go.png);}
-li.compose {background-image: url(/plugin_assets/community_engine/images/icons/email_edit.png);}
+li.compose {background: url(/plugin_assets/community_engine/images/icons/email_edit.png) no-repeat;}
 .messages .photo a img{
 	float: left;
 	display: block;
