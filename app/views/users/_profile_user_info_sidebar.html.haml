@@ -10,7 +10,7 @@
     %br/
     = link_to( "&raquo; #{:assign_role.l}: #{@user.moderator? ? :member.l : :moderator.l}", toggle_moderator_user_path(@user), {:method => :put} )
 
--box :class => 'hentry', :id => 'profile_details' do
+-box :class => 'hentry alt', :id => 'profile_details' do
   .centered
     - if @is_current_user
       - if @user.avatar
@@ -25,23 +25,4 @@
 
   - if current_user and current_user.can_request_friendship_with(@user)
     = add_friend_link(@user)
-
-  %h3=:my_details.l
-  .vcard.author
-    %ul
-      %li.update
-        %a{:href=>"#{user_path(@user)}", :rel=>"bookmark"}
-          %abbr.published{:title=>"#{@user.created_at}"}
-            = :member_since.l + @user.created_at.strftime(": %m/%d/%y")          
-      %li.view
-        =:profile_views.l
-        = "(#{@user.view_count})"
-      - if @user.offerings.any?
-        %li.skills= :my_skills.l+": #{@user.offerings.collect{|o| link_to o.skill.name, skill_url(o.skill) }.join(', ')}"
-      - if @user.tags.any?
-        %li.tags= :my_tags.l+": #{@user.tags.collect{|t| link_to t.name, tag_url(t) }.join(", ")}"
-      - if @user.neighborhood
-        %li.geo= link_to(@user.full_location, users_path(:neighborhood_id => @user.neighborhood_id, :county_id => @user.county_id ) ) 
-      - if current_user
-        %li.compose= link_to(:send_me_a_message.l, new_user_message_path(current_user, :to=>@user))
   .clear

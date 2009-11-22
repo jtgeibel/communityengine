@@ -35,7 +35,7 @@
       =:featured_writer.l
     -@featured_writers.each do |user|
       =render :partial => "users/sidebar_user", :locals => {:user => user}
-  -box :class => "alt" do 
+  -box :class => "alt", :id => "active_users" do 
     %h3= :active_users.l
     -@active_users.each do |user|    
       =render :partial => "users/sidebar_user", :locals => {:user => user}      
