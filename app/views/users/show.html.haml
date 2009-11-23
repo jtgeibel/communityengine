@@ -57,16 +57,7 @@
 
 #yui-main
   .yui-b
-    -box :id => "about_me" do
-      %h3
-        = link_to @user.login, user_path(@user)
-        = " <small>(#{:featured_writer.l})</small>" if @user.featured_writer?
-
-      - if @user.description
-        %p= @user.description
-
     -box :class => 'hentry alt', :id => "profile_details" do
-      %h3.no_leaf=:my_details.l
       .vcard.author
         %ul
           %li.update
@@ -85,8 +76,15 @@
           - if current_user
             %li.compose= link_to(:send_me_a_message.l, new_user_message_path(current_user, :to=>@user))
 
+    -box :id => "about_me" do
+      %h3
+        = link_to @user.login, user_path(@user)
+        = " <small>(#{:featured_writer.l})</small>" if @user.featured_writer?
+
+      - if @user.description
+        %p= @user.description
+
     -box :class => 'hfeed comments', :id => 'comments' do
-      %h3=:profile_comments.l
       %h2=:add_your_comment.l
       = render :partial => 'comments/comment_form', :locals => {:commentable => @user}
       %a#newest_comment
