@@ -825,11 +825,10 @@ div.user_list div.vcard {
 	margin: 0 12px 15px 0;
 	}
 	
-/*USER PROFILE SIDEBAR*/
-#profile_details div.vcard{
-	width: 100%;}
-	#profile_details .vcard ul{
-		margin-left: 0px;}
+/*USER PROFILE*/
+#profile_details {
+float: right;
+}
 
 /* CATEGORY PAGES */
 .box h3 ul.subnav {
