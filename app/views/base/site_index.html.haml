@@ -14,17 +14,22 @@
 .yui-b  
   -unless logged_in?
     =render :partial => 'base/signup_button'
-  =render :partial => 'shared/explore'
 
   -box :class => "alt" do 
-    %h3
-      = :whats_hot.l
-      
-    %ul.list.page
-      -@popular_posts.each do |post|
-        =render :partial => 'posts/sidebar_post', :locals => {:post => post}
+    -if @popular_posts.count > 0
+      %h3= :whats_hot.l
+      %ul.list.page
+        -@popular_posts.each do |post|
+          =render :partial => 'posts/sidebar_post', :locals => {:post => post}
+      %h6.all
+        %a{:href=>popular_url}= :see_all.l
+
+  -box :class => "alt", :id => "active_users" do 
+    %h3= :active_users.l
+    -@active_users.each do |user|    
+      =render :partial => "users/sidebar_user", :locals => {:user => user}      
     %h6.all
-      %a{:href=>popular_url}= :see_all.l
+      %a{:href=>users_url} See More
 
   -box :class => "alt" do 
     %h3
@@ -34,9 +39,5 @@
     - tag_cloud @popular_tags, %w(nube1 nube2 nube3 nube4 nube5) do |name, css_class|
       = link_to name, tag_path(URI::encode(name, /[\/.?#]/)), :class => css_class
     %h6.all=link_to :all_tags.l, tags_path
-  -box :class => "alt", :id => "active_users" do 
-    %h3= :active_users.l
-    -@active_users.each do |user|    
-      =render :partial => "users/sidebar_user", :locals => {:user => user}      
-    %h6.all
-      %a{:href=>users_url} See More
+
+  =render :partial => 'shared/explore'
