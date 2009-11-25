@@ -114,7 +114,7 @@ background:url(/plugin_assets/community_engine/images/bg_navbar.jpg) no-repeat;
 height:129px;
 position:relative;
 }
-#hd h1 {position:absolute; width:210px; height:108px; top:13px;}
+#hd h1 {position:absolute; width:210px; height:108px; top:13px; padding-left: 10px;}
 #hd h1 a {display:block; text-indent:-999em; height:108px;}
 
 
@@ -136,10 +136,10 @@ background-position: left center;
 
 /* Navbar */
 
-#NavBar {position:absolute; top:47px; font-size:150%; text-transform:uppercase; list-style:none; padding-left: 235px;}
-#NavBar li {float:left; padding-left:17px;}
+#NavBar {position:absolute; top:47px; font-size:138.5%; text-transform:uppercase; list-style:none;width:100%;}
 
-#NavBar ul, #NavBar ul li{float: left;}
+#NavBar li {float:left; padding-left:17px;}
+#NavBar ul {float: left; padding-left: 235px;}
 
 #NavBar ul li#active a, #NavBar ul li.current a{
 text-decoration: none !important;
