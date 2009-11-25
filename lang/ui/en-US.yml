@@ -616,7 +616,7 @@ en:
   #en: location: Location
   location: Location
   #en: log_in: Log in
-  log_in: Log in
+  log_in: Log In
   #en: log_in_to_create_a_new_topic: Log in to create a new topic
   log_in_to_create_a_new_topic: Log in to create a new topic
   #en: log_in_to_leave_a_comment: Log in to leave a comment
@@ -1104,9 +1104,9 @@ en:
   #en: sign_up_for_a_: Sign up for a
   sign_up_for_a_: Sign up for a
   #en: sign_up_reason_1: Some reason to sign up
-  sign_up_reason_1: Some reason to sign up
+  sign_up_reason_1: After singing up you will be able to post to the blogs and forums.
   #en: sign_up_reason_2: Some reason to sign up
-  sign_up_reason_2: Some reason to sign up
+  sign_up_reason_2: Find other Pittsburgh gardeners by neighborhood and skills.
   #en: singular_posts: "{{count}} post"
   singular_posts: "{{count}} post"
   #en: site_members: "{{site}} members"
@@ -1368,7 +1368,7 @@ en:
   #en: we_need_you: We need you
   we_need_you: We need you
   #en: welcome_message: Welcome! {{login_link}} or {{signup_link}}
-  welcome_message: "Welcome! {{login_link}} or {{signup_link}}"
+  welcome_message: "{{login_link}} | {{signup_link}}"
   #en: what_are_tags: 'What are "Tags"?'
   what_are_tags: 'What are "Tags"?'
   #en: what_is: What is
