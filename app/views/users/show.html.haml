@@ -6,13 +6,13 @@
   = render :partial => 'profile_user_info_sidebar', :locals => {:user => @user}
 
   - unless @photos.empty?
-    -box :class => 'alt', :id => "profile_photos" do
-      %h3.no_leaf=:photos.l
+    -box :id => "profile_photos" do
+      %h3=:photos.l
       - @photos.each do |photo|
         = link_to image_tag( photo.public_filename(:thumb), :class => "polaroid", :width => "88", :height => "88"), user_photo_path(@user, photo)
 
-  -box :class => 'alt', :id => 'friends' do
-    %h3.no_leaf
+  -box :id => 'friends' do
+    %h3
       =:my_friends.l
       = link_to "(#{@friend_count})", accepted_user_friendships_path(@user) if @friend_count > 5
     = link_to "&raquo; #{:invite_a_friend.l :site => AppConfig.community_name}", invite_user_path(@user) if @is_current_user
@@ -27,7 +27,7 @@
         =link_to :see_all.l, accepted_user_friendships_path(@user)
 
   - unless @users_comments.empty?
-    -box :class => 'yui-g alt', :id => 'photo_comments' do
+    -box :class => 'yui-g', :id => 'photo_comments' do
       %h3=:my_recent_comments.l
       - @users_comments.each do |comment|
         %dl.vcard
@@ -45,7 +45,7 @@
 
 
   - unless @photo_comments.empty?
-    -box :class => 'yui-g alt', :id => 'photo_comments' do
+    -box :class => 'yui-g', :id => 'photo_comments' do
       %h3=:photo_comments.l
       - @photo_comments.each do |comment|
         %dl.vcard
@@ -59,7 +59,7 @@
 
 #yui-main
   .yui-b
-    -box :class => 'hentry alt', :id => "profile_details" do
+    -box :class => 'hentry', :id => "profile_details" do
       .vcard.author
         %ul
           %li.update
@@ -78,7 +78,7 @@
           - if current_user
             %li.compose= link_to(:send_me_a_message.l, new_user_message_path(current_user, :to=>@user))
 
-    -box :id => "about_me" do
+    -box :id => "about_me", :class => "alt" do
       %h3
         = link_to @user.login, user_path(@user)
         = " <small>(#{:featured_writer.l})</small>" if @user.featured_writer?
@@ -86,7 +86,7 @@
       - if @user.description
         %p= @user.description
 
-    -box :class => 'hfeed comments', :id => 'comments' do
+    -box :class => 'hfeed comments alt', :id => 'comments' do
       %h2=:add_your_comment.l
       %p= render :partial => 'comments/comment_form', :locals => {:commentable => @user}
       %a#newest_comment

@@ -2,7 +2,7 @@
 - @section = @category.name
 
 .yui-b
-  -box do 
+  -box :class => "alt" do 
     %h3.signup=:have_something_to_contribute.l
     %ul.list.checks
       - if logged_in?
@@ -31,7 +31,7 @@
 
 #yui-main
   .yui-b
-    -box :class => "hfeed" do 
+    -box :class => "hfeed alt" do 
       %h3      
         =:show_category.l :category => @category.name
         %ul.subnav

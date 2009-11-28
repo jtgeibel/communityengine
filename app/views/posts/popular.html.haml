@@ -2,7 +2,7 @@
 - @section = 'popular'
 
 .yui-b
-  -box do 
+  -box :class => "alt" do 
     - if logged_in?
       %h3.signup= :get_popular.l
       %ul.list.checks
@@ -27,7 +27,7 @@
 
 #yui-main
   .yui-b
-    -box :class => "hfeed" do 
+    -box :class => "hfeed alt" do 
       %h3 
         =:what_is_popular.l
         %ul.subnav

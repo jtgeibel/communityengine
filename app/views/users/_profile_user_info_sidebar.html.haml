@@ -10,7 +10,7 @@
     %br/
     = link_to( "&raquo; #{:assign_role.l}: #{@user.moderator? ? :member.l : :moderator.l}", toggle_moderator_user_path(@user), {:method => :put} )
 
--box :class => 'hentry alt', :id => 'profile_details' do
+-box do
   .centered
     - if @is_current_user
       - if @user.avatar
