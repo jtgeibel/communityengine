@@ -1,4 +1,5 @@
 -box :class => 'alt first_alt' do
+  %h3 Search
   = link_to( "&raquo; #{:back_to_all_users.l}", users_path) if params['login'] || params['tag_list']
   - form_tag users_path, :method => :get , :class => 'MainForm' do
     %label= :user_login.l+":"
