@@ -15,8 +15,8 @@
   -unless logged_in?
     =render :partial => 'base/signup_button'
 
-  -box :class => "alt" do 
-    -if @popular_posts.count > 0
+  -if @popular_posts.count > 0
+    -box :class => "alt" do 
       %h3= :whats_hot.l
       %ul.list.page
         -@popular_posts.each do |post|

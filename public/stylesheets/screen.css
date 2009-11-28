@@ -139,7 +139,7 @@ background-position: left center;
 #NavBar {position:absolute; top:47px; font-size:138.5%; text-transform:uppercase; list-style:none;width:100%;}
 
 #NavBar li {float:left; padding-left:17px;}
-#NavBar ul {float: left; padding-left: 235px;}
+#NavBar ul {float: left; margin-left: 235px;}
 
 #NavBar ul li#active a, #NavBar ul li.current a{
 text-decoration: none !important;
@@ -204,18 +204,18 @@ background-color: #9ec500;
 
 .box h2, .box h3 {
 font-size: 207.8%;
-font-weight: normal;
-font-family:Georgia,Times,"Times New Roman",serif;
-margin-bottom: 0.5em;
+margin-left: -30px;
+margin-bottom: -9px;
 padding: 0 0 0.35em 0.9em;
+}
+
+h6.all {
+margin-left: -30px;
 }
 
 .box{
 margin-bottom: 1em;
-}
-
-.box h2{
-margin-bottom: .5em;
+padding-left: 30px;
 }
 
 .box h2, .box h3{
@@ -223,7 +223,7 @@ color:#bdbdbd; font-weight:normal;
 background: url(/plugin_assets/community_engine/images/h2_leaf.png) no-repeat bottom left;
 }
 
-h3.no_leaf, #commentbox p {font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif !important; font-size:140% !important; background:none; padding:20px 0 0 0 !important; color:#605f5f;}}
+h3.no_leaf {font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif !important; font-size:140% !important; background:none; padding:20px 0 0 0 !important; color:#605f5f;margin-left:0;}}
 
 /*.alt{
 padding: 1em;
