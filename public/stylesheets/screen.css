@@ -58,7 +58,6 @@ margin-right:29.4615em;*margin-right:28.725em;
 /* =============================================== */
 
 body {
-/* font: 12px/150% "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif; */
 font-family: "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif;
 background:#fff url(/plugin_assets/community_engine/images/bg.png) repeat-x top center;
 }
@@ -255,91 +254,6 @@ padding-left: 30px;
 
 .i_member{background: url(/plugin_assets/community_engine/images/icons/user.png) no-repeat;}
 
-/*.hentry{
-margin: 0 0 1em 0;
-}
-
-.comments .hentry{
-border-bottom: 1px dotted #a2a19b;
-}
-
-.comments .hentry:last-child{border: none;}
-
-.hentry h4{
-font-size: 153.9%;
-font-weight: bold;
-margin-bottom: 15px;}
-
-.hentry h4 a{
-text-decoration: none;
-color: #464337;
-}
-
-.hentry h4 a:hover{text-decoration: underline;}
-
-.hentry .vcard{
-float: left;
-width: 13.8461em;
-*width:  13.5em; 
-}
-
-div.main div.vcard{
-width: 9.2307em;
-*width:  9em; 
-}
-
-.entry-content{
-margin-left:  15.3846em; 
-*margin-left:  15em; 
-}
-
-div.main div.entry-content{
-margin-left:  10.4769em; 
-*margin-left:  10.5em; 
-}
-
-.page-content, .event-content{
-margin-left: 0px; 
-}
-
-.hentry .vcard h5{
-float: left;
-width: 66px;
-}
-
-.hentry .vcard h5 a img{
-display: block;
-border: 1px solid #a2a19b;
-padding: 2px;
-background: #fff;
-}
-
-.hentry .vcard h5 a:hover img{background: #a2a19b; }
-
-.hentry .vcard ul{
-margin-left: 66px;
-font-size: 85%;
-}
-
-div.main .vcard ul{
-margin-left: 0;}
-
-
-.hentry .vcard ul li{
-padding: 3px 0;
-border-bottom: 1px dotted #a2a19b;
-padding-left: 20px;
-background-color: transparent;
-background-position: left 3px;
-background-repeat: no-repeat;
-}
-
-.hentry .vcard ul li.fn{
-font-size: 130%;
-font-weight: bold;
-padding:0 0 3px 0;
-}*/
-
 /*  --- Eventually I should make these follow Nathans scheme i_ for icons --- */
 .hentry .vcard ul li {padding-left:20px;}
 .hentry .vcard ul li.update{background: url(/plugin_assets/community_engine/images/icons/date.png) no-repeat }
@@ -358,26 +272,6 @@ padding:0 0 3px 0;
 .hentry .vcard ul li.geo{background: url(/plugin_assets/community_engine/images/icons/world.png) no-repeat }
 .hentry .vcard ul li.edit{background: url(/plugin_assets/community_engine/images/icons/post.png) no-repeat }
 .hentry .vcard ul li.delete{background: url(/plugin_assets/community_engine/images/icons/delete.png) no-repeat }
-
-
-/*.entry-content h6{
-border-bottom: 1px dotted #a2a19b;
-border-top: 1px dotted #a2a19b;
-text-align: right;
-padding:2px 0;
-}
-
-.entry-content h6 a{
-font-size: 85%;
-font-weight: bold;
-text-transform: uppercase;
-text-decoration: none;
-background: transparent url(/plugin_assets/community_engine/images/icons/add.png) no-repeat left center;
-padding-left: 20px;
-padding: 2px 2px 2px 20px;
-}
-
-.entry-content h6 a:hover{text-decoration: underline;}*/
 
 .entry-content {clear: both;}
 /* brings back styles for entry elements */
