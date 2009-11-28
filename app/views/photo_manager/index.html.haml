@@ -1,7 +1,7 @@
 .yui-b.sidebar
   -box do 
     %h3=:links.l
-    %ul.checks
+    %ul.checks.list
       %li=link_to :view_all_my_photos.l, user_photos_path(current_user)
       %li=link_to :new_photo.l, new_user_photo_path(current_user)
       %li=link_to :new_album.l, new_user_album_path(current_user)
