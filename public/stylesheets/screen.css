@@ -201,6 +201,8 @@ background-color: #9ec500;
 /* 4. BOX and ALTBOX                               */
 /* =============================================== */
 
+#bd {margin-top: -1em;}
+
 .box h3{
 font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif !important;
 font-size:140%;
@@ -210,6 +212,7 @@ margin-left:0;
 }
 
 .box{
+margin-top: 1em;
 margin-bottom: 1em;
 }
 
@@ -220,6 +223,12 @@ padding: 0 0 9px 26px;
 color:#bdbdbd;
 font-weight:normal;
 background: url(/plugin_assets/community_engine/images/h2_leaf.png) no-repeat bottom left;
+}
+
+#bd .alt h3 a {
+color:#bdbdbd;
+font-weight:normal;
+text-decoration: none;
 }
 
 .alt h6.all {
@@ -236,7 +245,7 @@ padding-left: 30px;
 /* =============================================== */
 
 #bd li {margin:5px 0;}
-#bd ul, #bd ol {margin:20px 0 20px 30px;}
+#bd .entry-content ul, #bd .entry-content ol {margin: 20px 0 20px 30px;}
 #bd p {margin:5px 0;}
 
 #bd a {font-size:110.8%; color:#c5ae0c; font-weight:normal;}
@@ -530,7 +539,7 @@ margin-left:  12.3846em; /* about 200px - 3em*/
 /* =============================================== */
 
 #CommunityFooter{
-margin: 20px 0;
+margin: 10px 0;
 font-size: 85%;}
 
 #CommunityFooter ul, #CommunityFooter ul li{float: left;}
@@ -690,21 +699,24 @@ div.pagination a.active {
 
 /* USER LIST */
 div.user_list .row {
-	border:1px solid #cccccc;
-	margin:1em 0 1em 0;
-	margin-bottom:1.5em;
-	padding:0.5em;
-	}
-	div.user_list .row h3 {
-		}
+border:1px solid #cccccc;
+margin:1em 0 1em 0;
+margin-bottom:1.5em;
+padding:0.5em;
+}
+
 div.user_list div.vcard {
-	width: 100%;}
-	div.user_list div.vcard ul {
-	margin-left: 0;
-	font-size: 85%;
-	}
-		
-		
+width: 100%;}
+
+#bd div.user_list div.vcard ul {
+margin-left: 0;
+font-size: 85%;
+}
+
+#bd div.user_list div.vcard ul li {
+min-height: 16px;
+}
+
 /*PHOTOS & CLIPPINGS*/
 #photos img.polaroid, #clippings img.polaroid {
 	margin: 0 12px 15px 0;
