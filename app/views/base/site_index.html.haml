@@ -6,7 +6,7 @@
       %h3
         =:upcoming_events.l
       = render :partial => 'events/event', :collection => Event.all, :locals=>{:show_details_link=>true}
-    -box :class => "hfeed" do 
+    -box :class => "hfeed alt" do 
       %h3
         =:recent_posts.l
       = render :partial => 'posts/post', :collection => @posts
