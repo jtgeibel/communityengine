@@ -713,7 +713,7 @@ margin-left: 0;
 font-size: 85%;
 }
 
-#bd div.user_list div.vcard ul li {
+div.vcard ul li {
 min-height: 16px;
 }
 
@@ -724,6 +724,7 @@ min-height: 16px;
 	
 /*USER PROFILE*/
 #profile_details {
+font-size: 92.2%;
 float: right;
 }
 
