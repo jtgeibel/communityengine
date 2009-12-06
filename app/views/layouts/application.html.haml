@@ -22,8 +22,8 @@
                   
         = @content_for_layout
                             
-      #ft
-        -#if show_footer_content?    
+      -#if show_footer_content?    
+        #ft
           .yui-gc#footer_content
             = image_tag 'spinner.gif', :plugin => 'community_engine'
             =:loading_recent_content.l       
