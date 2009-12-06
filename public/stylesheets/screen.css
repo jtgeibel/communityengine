@@ -928,3 +928,15 @@ table.poll {
       font-size: 10px;
       text-align: right;
       padding-right: 2px; }
+
+#comments .vcard {float:left; width:175px; text-align:right;}
+#comments .vcard img {float:right; margin-left:10px;}
+#comments .vcard li {padding-right:76px !important;}
+#comments .comment-bubble {
+background:url(/plugin_assets/community_engine/images/speak_comment.gif) no-repeat 1px 13px;
+padding-left:20px;
+float:left;
+width:399px;
+clear:none;
+}
+#comments .entry-content {background:#f0f0ee; -moz-border-radius:10px; -webkit-border-radius:10px; padding:7px;}
