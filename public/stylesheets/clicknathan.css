@@ -3,51 +3,10 @@
 /* Part of framework */
 /* body, h1, h2, h3, h4, h5, h6, form, input, fieldset, p, blockquote, ul, ol, li {margin:0; padding:0;} */
 body {font: 12px/150% "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif; color:#605f5f; text-align:center; background:#fff url(img/bg.png) repeat-x top center; }
-/* img, fieldset {border:none;} */
-/* input, button {-moz-border-radius:5px; -webkit-border-radius:5px;} */
-
-/* Positioning and Functionality */
-/* changed width to 950px, using YUI for layout */
-/* #container {width:936px; margin:0 auto; text-align:left;} */
-
-/* #header {background:url(img/bg_header.jpg) no-repeat; height:129px; position:relative;} */
-
-/*h1 {position:absolute; width:210px; height:108px; top:13px;}
-h1 a {display:block; text-indent:-999em; height:108px;}*/
-
-/*#nav {position:absolute; left:235px; top:47px; font-size:150%; text-transform:uppercase; list-style:none; }
-#nav li {float:left; padding-left:17px;}*/
-
-/*#header h2 {background:url(img/example_avatar.jpg) no-repeat; padding-top:9px; font-size:125%; position:absolute; width:182px; right:10px; top:0; height:34px; text-align:right; z-index:9;}
-#header h2 a {font-weight:normal; padding-right:20px;}*/
 
 .avatar_mask {position:absolute; z-index:10; top:27px; left:744px; }
 
-/*#user-menu-tip {display:none; width:189px; position:absolute; z-index:2; left:740px; top:27px; background:url(img/bg_dropdown.png) no-repeat bottom center; padding-bottom:15px;}
-#user-menu-tip ul {list-style:none; margin:0 4px; padding:13px 0; border-bottom:1px solid #cfcfcf;}
-#user-menu-tip a {display:block; padding:5px 7px;}
-#user-menu-tip a:hover {background:#fefbe6;}
-
-.shortlinks {background:#fef5b4;}*/
-
-/* .logout a {padding:3px 7px 5px 9px !important; margin-bottom:-5px;} I don't think this is necessary now */
-
-/*#searchform {position:absolute; right:40px; top:76px; width:140px;}
-#searchform input {border:none; padding-top:5px;}*/
-
-/*#left_home {width:510px; float:left; padding:10px 10px 0 18px;}
-#right_home {width:380px; float:left; padding-top:15px;}
-#left_profile {width:292px; float:left; padding:10px 0;}
-#right_profile {width:621px; float:left; padding:10px 0 0 23px;}*/
-
 #activity {margin-bottom:18px;}
-
-/*.post {margin-left:24px; margin-bottom:20px;}*/
-
-/*.post_image {float:left; margin:0 10px 10px 0;}*/
-
-/*.lowbar {background:url(img/lowbar.jpg) repeat-x; height:19px; padding:5px; text-align:right; margin-bottom:20px;}
-.lowbar a {color:#5f5f5f !important; font-size:125% !important; background:url(img/i_plus.png) no-repeat right center; padding-right:20px;}*/
 
 #footer {float:left; width:100%; position:relative; height:115px;}
 .housekeeping {position:absolute; left:25px; top:22px;}
@@ -71,51 +30,18 @@ h1 a {display:block; text-indent:-999em; height:108px;}*/
 
 /* Typography */
 
-/*#nav, #header h2, #user-menu-tip, #content h2, #content a, #content h3 {font-family:Georgia,Times,"Times New Roman",serif;}
-#nav li a, #header h2 a, #user-menu-tip a {text-decoration:none; color:black;}*/
-
 #user-menu-tip a {font-size:125%;}
 
 #content h2 {color:#bdbdbd; font-size:225%; font-weight:normal; background:url(img/h2_leaf.png) no-repeat bottom left; padding:0 0 16px 24px; margin-bottom:10px;}
 #left_profile h2, #commentbox p {font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif !important; font-size:140% !important; background:none; padding:20px 0 0 0 !important; color:#605f5f;}
 #commentbox p {padding-left:10px !important;}
 
-/*#content p {margin:5px 0;}*/
-
-/*#content ul, #content ol {margin:20px 0 20px 30px;}*/
 
 #activity ul {list-style:none; margin-left:24px;}
-/*#content li {margin:5px 0;}*/
-.i_person {background:url(img/i_person.gif) no-repeat; padding-left:20px;}
-.i_photo {background:url(img/i_person.gif) no-repeat; padding-left:20px;}
-.i_location {background:url(img/i_location.gif) no-repeat; padding-left:20px;}
-.i_skills {background:url(img/i_skills.gif) no-repeat; padding-left:20px;}
 
 .date_stamp {color:#9c9c9c; display:block; width:75px; float:left;}
 
-/*#content a {font-size:120%; color:#c5ae0c; font-weight:normal;}*/
-
-/*#content img {border:1px solid #c0bfbf; padding:2px;}
-
-#content h3 {font-size:200%; color:#c5ae0c; font-weight:normal; margin-bottom:10px; line-height:100%;}
-#content h3 a {text-decoration:none;}*/
-
-/*.post_tools {list-style:none; margin:10px 0; width:100%; height:40px;}
-.post_tools li {float:left; padding-left:20px; margin-right:5px !important;}
-.post_tools a {color:#9c9c9c !important; font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif !important; font-size:100% !important; text-decoration:none;}*/
-.i_calendar {background:url(img/i_calendar.gif) no-repeat; padding-left:20px;}
-.i_views {background:url(img/i_views.gif) no-repeat;}
-.i_comments {background:url(img/i_comments.gif) no-repeat;}
-.i_friend {background:url(img/i_friend.gif) no-repeat;}
-
-.plus {float:right; margin-top:-25px !important; background:url(img/i_plus2.gif) no-repeat center right; padding-right:20px;}
 #friends p {float:right;}
-
-#right_home ul {list-style:none;}
-
-.i_page {background:url(img/i_page.gif) no-repeat; padding-left:20px;}
-
-.user_list li {clear:both; margin:10px 0; height:100px;}
 
 #footer a {color:#9c9c9c; text-decoration:none;}
 
@@ -126,6 +52,3 @@ h1 a {display:block; text-indent:-999em; height:108px;}*/
 
 .comment_tools {text-align:right;}
 .rss_icon {background:url(img/rss_icon.jpg) no-repeat; padding-left:22px;}
-
-/* Forms */
-
