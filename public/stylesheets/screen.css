@@ -543,23 +543,16 @@ margin-left:  12.3846em; /* about 200px - 3em*/
 /* =============================================== */
 
 #CommunityFooter{
-margin: 10px 0;
+margin: 10px 0 30px;
 font-size: 85%;}
 
 #CommunityFooter ul, #CommunityFooter ul li{float: left;}
 
 #CommunityFooter li a{
-padding: 2px 10px;
+padding: 0 6px;
 display: block;
-border-left: 1px solid #ccc;
+border-left: 1px solid #000;
 }
-
-#CommunityFooter li#rss a{
-color: #fff;
-background: orange;
-text-decoration: none;
-}
-
 
 #CommunityFooter li:first-child a{
 border: none;
@@ -569,8 +562,11 @@ padding-left: 0;
 
 #CommunityFooter p{
 float: right;
-padding: 2px 0 2px 120px;
-background: url(/plugin_assets/community_engine/images/logo.gif) no-repeat left center;
+}
+
+#CommunityFooter a{
+color:#9c9c9c;
+text-decoration:none;
 }
 
 /* =============================================== */
