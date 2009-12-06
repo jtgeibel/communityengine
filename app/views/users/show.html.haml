@@ -63,9 +63,8 @@
       .vcard.author
         %ul
           %li.update
-            %a{:href=>"#{user_path(@user)}", :rel=>"bookmark"}
-              %abbr.published{:title=>"#{@user.created_at}"}
-                = :member_since.l + @user.created_at.strftime(": %m/%d/%y")          
+            %abbr.published{:title=>"#{@user.created_at}"}
+              = :member_since.l + @user.created_at.strftime(" %b %d, %Y")          
           %li.view
             =:profile_views.l
             = "(#{@user.view_count})"

@@ -45,11 +45,3 @@ body {font: 12px/150% "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans
 
 .comment_tools {text-align:right;}
 .rss_icon {background:url(img/rss_icon.jpg) no-repeat; padding-left:22px;}
-
-/* Footer */
-#footer {float:left; width:100%; position:relative; height:115px;}
-.housekeeping {position:absolute; left:25px; top:22px;}
-.credit_design {position:absolute; left:511px; top:22px;}
-.credit_cms {position:absolute; left:705px; top:22px;}
-
-#footer a {color:#9c9c9c; text-decoration:none;}
