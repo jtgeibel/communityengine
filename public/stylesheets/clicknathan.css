@@ -11,14 +11,6 @@ body {font: 12px/150% "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans
 #commentbox {background:url(img/chat_speak.jpg) no-repeat 142px 75px;}
 #commentboxwrap {background:#f0f0ee; -moz-border-radius:10px; -webkit-border-radius:10px; padding:7px; width:352px; margin-top:11px;}
 
-#comments ul {list-style:none;}
-#comments li {margin:10px 0 !important; float:left;}
-.commeta {float:left; width:171px; text-align:right;}
-.comment_text {float:left; width:399px;}
-
-.commeta img {float:right; padding:0 0 0 10px;}
-.commeta p {padding-right:67px !important;}
-
 .comment_text {background:url(img/speak_comment.gif) no-repeat 1px 13px; padding-left:20px;}
 .comment_verbage {background:#f0f0ee; -moz-border-radius:10px; -webkit-border-radius:10px; padding:7px;}
 
