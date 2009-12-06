@@ -84,16 +84,16 @@ class UsersController < BaseController
   
   def show  
     @friend_count               = @user.accepted_friendships.count
-    @accepted_friendships       = @user.accepted_friendships.find(:all, :limit => 5).collect{|f| f.friend }
+    @accepted_friendships       = @user.accepted_friendships.find(:all, :limit => 6).collect{|f| f.friend }
     @pending_friendships_count  = @user.pending_friendships.count()
 
     @comments       = @user.comments.find(:all, :limit => 10, :order => 'created_at DESC')
     @photo_comments = Comment.find_photo_comments_for(@user)    
-    @users_comments = Comment.find_comments_by_user(@user, :limit => 5)
+    @users_comments = Comment.find_comments_by_user(@user, :limit => 3)
 
     @recent_posts   = @user.posts.find(:all, :limit => 2, :order => "published_at DESC")
-    @clippings      = @user.clippings.find(:all, :limit => 5)
-    @photos         = @user.photos.find(:all, :limit => 5)
+    @clippings      = @user.clippings.find(:all, :limit => 3)
+    @photos         = @user.photos.find(:all, :limit => 3)
     @comment        = Comment.new(params[:comment])
     
     @my_activity = Activity.recent.by_users([@user.id]).find(:all, :limit => 10) 

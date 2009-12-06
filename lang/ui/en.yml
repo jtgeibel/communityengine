@@ -296,7 +296,7 @@ en:
   #en: comments_rss: Comments RSS
   comments_rss: Comments RSS
   #en: community_tagline: CommunityEngine Rocks!
-  community_tagline: CommunityEngine Rocks!
+  community_tagline: Powered by Community Engine
   #en: comment_unsubscribe_succeeded: Thanks, you have been unsubscribed from notifications on this comment.  
   comment_unsubscribe_succeeded: "Thanks, you have been unsubscribed from notifications on this comment."
   #en: compose: Compose
@@ -762,7 +762,7 @@ en:
   #en: members: Members
   members: Members
   #en: member_since: Member since
-  member_since: Member since
+  member_since: Member Since
   #en: message: Message
   message: Message
   #en: messages_deleted: Messages deleted

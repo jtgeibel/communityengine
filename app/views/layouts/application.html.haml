@@ -22,8 +22,8 @@
                   
         = @content_for_layout
                             
-      #ft
-        -#if show_footer_content?    
+      -#if show_footer_content?    
+        #ft
           .yui-gc#footer_content
             = image_tag 'spinner.gif', :plugin => 'community_engine'
             =:loading_recent_content.l       
@@ -51,4 +51,5 @@
             %li#rss= link_to :rss.l, @rss_url, {:title => @rss_title}
 
         %p
-          = :community_tagline.l
+          %a{:href=>"http://communityengine.org/", :title=>"More Information"}
+            = :community_tagline.l
