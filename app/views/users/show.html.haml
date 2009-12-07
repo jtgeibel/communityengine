@@ -7,23 +7,23 @@
 
   - unless @photos.empty?
     -box :id => "profile_photos" do
-      %h3=:photos.l
+      %h3
+        =:photos.l
+        .plus= link_to(:add_a_photo.l, new_user_photo_path(@user)) if @is_current_user
       - @photos.each do |photo|
         = link_to image_tag( photo.public_filename(:thumb), :class => "polaroid", :width => "88", :height => "88"), user_photo_path(@user, photo)
+      .all.right= link_to :view_all_my_photos.l, user_photos_path(@user)
 
   -box :id => 'friends' do
     %h3
       =:my_friends.l
-      = link_to "(#{@friend_count})", accepted_user_friendships_path(@user) if @friend_count > 5
-    = link_to "&raquo; #{:invite_a_friend.l :site => AppConfig.community_name}", invite_user_path(@user) if @is_current_user
-    %br
-    = link_to "&raquo; #{:view_all_my_friend_requests.l} (#{@pending_friendships_count})", pending_user_friendships_path(@user) if @is_current_user
-    %br
-    %br
+      = link_to "(#{@friend_count})", accepted_user_friendships_path(@user) if @friend_count > 6
+      .plus= link_to "#{:invite_a_friend.l :site => AppConfig.community_name}", invite_user_path(@user) if @is_current_user
+    %div= link_to "&raquo; #{:view_all_my_friend_requests.l} (#{@pending_friendships_count})", pending_user_friendships_path(@user) if @is_current_user
     - @accepted_friendships.each do |user|
-      =render :partial => "users/sidebar_user", :locals => {:user => user}
-    -if @accepted_friendships.size > 4
-      %h6.all
+      = link_to image_tag(user.avatar_photo_url(:thumb), :class => "polaroid", :width => "88", :height => "88"), user_path(user)
+    -if @accepted_friendships.size > 3
+      %h6.all.right
         =link_to :see_all.l, accepted_user_friendships_path(@user)
 
   - unless @users_comments.empty?

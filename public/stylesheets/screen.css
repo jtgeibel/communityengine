@@ -382,6 +382,17 @@ background:url(/plugin_assets/community_engine/images/icons/add.png) no-repeat r
 padding-right:20px;
 }
 
+.box h3 div {
+float:right;
+font-size: 71.43%;
+}
+
+.box div.plus {
+color:#5f5f5f !important;
+background:url(/plugin_assets/community_engine/images/icons/add.png) no-repeat right center;
+padding-right:20px;
+}
+
 /* Main Form ========================= */
 
 .MainForm{
