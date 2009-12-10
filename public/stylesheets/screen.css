@@ -263,7 +263,8 @@ a {font-size:110.8%; color:#c5ae0c; font-weight:normal;}
 #bd .post_tools {margin:10px 0 10px 110px;}
 #bd .post_tools li {float:left; padding-left:20px; margin-right:8px !important;}
 #bd .post_tools a, .post_tool_header a {font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif !important; font-size:100% !important; text-decoration:none;}
-#bd .post_tools a {color:#9c9c9c !important;}
+#bd .post_tools a {color:#9c9c9c}
+#bd .post_tools a:hover {color: #0066FF}
 
 .i_member{background: url(/plugin_assets/community_engine/images/icons/user.png) no-repeat;}
 
@@ -375,7 +376,7 @@ dl.vcard dd.post{background-image: url(/plugin_assets/community_engine/images/ic
 dl.vcard dd.rss{background-image: url(/plugin_assets/community_engine/images/icons/rss.png);}
 
 
-h6.all {background:url(/plugin_assets/community_engine/images/lowbar.jpg) repeat-x; height:19px; padding:5px; text-align:right;}
+h6.all {background:url(/plugin_assets/community_engine/images/lowbar.jpg) repeat-x; height:19px; padding:5px; text-align:right;width: 100%;}
 h6.all a {
 color:#5f5f5f !important;
 font-size:125% !important;
@@ -578,6 +579,8 @@ float: right;
 color:#9c9c9c;
 text-decoration:none;
 }
+
+#CommunityFooter a:hover {color: #0066FF}
 
 /* =============================================== */
 /* 9. CLEARFIX                                     */
