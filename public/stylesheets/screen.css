@@ -153,11 +153,11 @@ text-decoration: none !important;
 
 #user-menu-tip {width:189px;z-index: 100;
 background:url(/plugin_assets/community_engine/images/bg_user_menu.png) no-repeat bottom center;
-padding-bottom: 15px;}
+padding-bottom: 10px;}
 #user-menu-tip ul {list-style:none; margin: 0 4px; padding:13px 0; border-bottom:1px solid #cfcfcf;}
 #user-menu-tip a {display:block; padding:5px 7px;}
 #user-menu-tip a:hover {background:#fefbe6;}
-#user-menu-tip > a {margin: 0 4px;}
+#user-menu-tip > a {margin: 8px 4px 0;}
 .shortlinks {background:#fef5b4;}
 
 /* =============================================== */
@@ -250,16 +250,17 @@ padding-left: 30px;
 #bd .entry-content ul, #bd .entry-content ol {margin: 20px 0 20px 30px;}
 #bd p {margin:5px 0;}
 
-#bd a {font-size:110.8%; color:#c5ae0c; font-weight:normal;}
+a {font-size:110.8%; color:#c5ae0c; font-weight:normal;}
 #bd img {border:1px solid #c0bfbf; padding:2px;}
 
 .hentry {margin-bottom: 1.538em;}
-.hentry h4, .hentry h4 a {font-size:184.6%; color:#c5ae0c; font-weight:normal; margin-bottom:10px; line-height:100%;text-decoration:none;}
+.hentry h4 {margin-bottom:10px;}
+.hentry h4 a {font-size:184.6%; font-weight:normal; line-height:100%;text-decoration:none;}
 .hentry h5 img {float:left; margin:0 10px 10px 0;}
 
-#bd .post_tool_header {margin: 0;}
+#bd .post_tool_header {margin-left: 110px;}
 #bd .post_tool_header li {padding-left: 20px;display:inline;}
-#bd .post_tools {margin:10px 0;}
+#bd .post_tools {margin:10px 0 10px 110px;}
 #bd .post_tools li {float:left; padding-left:20px; margin-right:8px !important;}
 #bd .post_tools a, .post_tool_header a {font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif !important; font-size:100% !important; text-decoration:none;}
 #bd .post_tools a {color:#9c9c9c !important;}
@@ -521,7 +522,6 @@ border-color: #666;
 
 .fresh dl{
 clear: both;
-border-bottom: 1px dotted #ccc;
 padding: 3px 0;
 }
 
