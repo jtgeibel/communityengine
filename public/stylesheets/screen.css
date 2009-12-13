@@ -261,6 +261,7 @@ a {font-size:110.8%; color:#c5ae0c; font-weight:normal;}
 #bd .post_tool_header {margin-left: 110px;}
 #bd .post_tool_header li {padding-left: 20px;display:inline;}
 #bd .post_tools {margin:10px 0 10px 110px;}
+#bd .main .post_tools {margin-left: 0;}
 #bd .post_tools li {float:left; padding-left:20px; margin-right:8px !important;}
 #bd .post_tools a, .post_tool_header a {font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,sans-serif !important; font-size:100% !important; text-decoration:none;}
 #bd .post_tools a {color:#9c9c9c}
