@@ -145,7 +145,7 @@ class User < ActiveRecord::Base
     activities = Activity.since(options[:since]).find(:all, 
       :select => 'activities.user_id, count(*) as count', 
       :group => 'activities.user_id', 
-      :conditions => "#{options[:require_avatar] ? ' users.avatar_id IS NOT NULL' : nil}", 
+      :conditions => "#{options[:require_avatar] ? ' users.avatar_id IS NOT NULL AND ' : ''} users.activated_at IS NOT NULL",
       :order => 'count DESC', 
       :joins => "LEFT JOIN users ON users.id = activities.user_id",
       :limit => options[:limit]
