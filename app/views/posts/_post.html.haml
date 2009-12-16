@@ -10,7 +10,7 @@
       %li.i_member=link_to post.user.login, user_path(post.user)
     %ul.post_tools
       %li.update
-        %abbr.published{:title=>"#{post.published_at}"}= post.published_at_display("%b %d")
+        %abbr.published{:title=>"#{post.published_at}"}= post.published_at_display(:short_literal_date)
       %li.view
         = :views.l
         = "(#{post.view_count})"
@@ -23,4 +23,3 @@
     = post.post
     
     = render :partial => 'polls/excerpt', :locals => {:poll => post.poll} if post.poll
-

@@ -1,7 +1,13 @@
 class PostsController < BaseController
   include Viewable
-  uses_tiny_mce(:options => AppConfig.default_mce_options, :only => [:new, :edit, :update, :create ])
-  uses_tiny_mce(:options => AppConfig.simple_mce_options, :only => [:show])
+
+  uses_tiny_mce(:only => [:new, :edit, :update, :create ]) do
+    AppConfig.default_mce_options
+  end
+
+  uses_tiny_mce(:only => [:show]) do
+    AppConfig.simple_mce_options
+  end
          
   cache_sweeper :post_sweeper, :only => [:create, :update, :destroy]
   cache_sweeper :taggable_sweeper, :only => [:create, :update, :destroy]    
@@ -72,9 +78,11 @@ class PostsController < BaseController
     @related = Post.find_related_to(@post)
     @most_commented = Post.find_most_commented
     
-    respond_to do |format|
-      format.html
-    end
+    
+    # respond_to do |format|
+    #   format.html
+    #   format.any
+    # end
   end
   
   def update_views
@@ -112,7 +120,7 @@ class PostsController < BaseController
       if @post.save
         @post.create_poll(params[:poll], params[:choices]) if params[:poll]
         
-        flash[:notice] = @post.category ? :post_created_for_category.l_with_args(:category => @post.category.name.singularize) : "Your post was successfully created.".l
+        flash[:notice] = @post.category ? :post_created_for_category.l_with_args(:category => @post.category.name.singularize) : :your_post_was_successfully_created.l
         format.html { 
           if @post.is_live?
             redirect_to @post.category ? category_path(@post.category) : user_post_path(@user, @post) 
