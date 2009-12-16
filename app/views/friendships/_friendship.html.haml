@@ -9,6 +9,6 @@
       %p= friendship.friendship_status.name.l
       %p
         =:requested.l
-        = time_ago_in_words friendship.created_at
+        = time_ago_in_words_or_date friendship.created_at
 
     .yui-u= friendship_control_links(friendship) if @is_current_user
