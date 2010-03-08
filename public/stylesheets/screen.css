@@ -172,30 +172,36 @@ margin-bottom: 1em;
 }
 
 #signup .box h4{
-background:url(/plugin_assets/community_engine/images/bg_h6btn.gif) repeat-x left center;
+background:url(/plugin_assets/community_engine/images/sign-up-button.gif) no-repeat 0 0;
+display:block;
+height:60px;
+text-decoration:none;
+}
+
+#signup .box h4:hover{
+background:url(/plugin_assets/community_engine/images/sign-up-button.gif) no-repeat 0 -60px;
 }
 
 #signup .box h4 a{
-background-color: transparent;
-background-image: url(/plugin_assets/community_engine/images/icons/52.png);
-background-repeat: no-repeat;
-background-position: .5em center;
 display: block;
-padding: 1em 1em 1em 3.5em;
-font-size: 138.5%;
+float: left;
+width: 260px;
+padding:12px 0 0 70px;
+color:#605f5f !important;
+font-size: 221.6%;
 text-decoration: none;
-text-transform: uppercase;
-color: #384016;
-font-weight: bold;
-border: 1px solid #9ec500;
+}
+
+#signup .box h4 a p{
+display: block;
+float: right;
+width:90px;
+font-size:50%;
+margin: 0;
 }
 
 #signup .first .box h4 a{
 background-image: url(/plugin_assets/community_engine/images/icons/31.png);
-}
-
-#signup .box h4 a:hover{
-background-color: #9ec500;
 }
 
 /* =============================================== */
