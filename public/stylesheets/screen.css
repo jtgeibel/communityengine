@@ -117,7 +117,7 @@ position:relative;
 #hd h1 a {display:block; text-indent:-999em; height:108px;}
 
 
-#hd h2 {padding-top:6px; padding-right: 25px; font-size:125%; float:right; width:181px; height:34px; text-align:right; z-index:9;}
+#hd h2 {padding-top:6px; padding-right: 10px; font-size:125%; float:right; width:181px; height:34px; text-align:right; z-index:9;}
 #hd h2 div a {padding: 0 10px; background: white;}
 #hd h2 a#user-menu {font-weight:normal; padding-right:20px;}
 
@@ -147,7 +147,7 @@ text-decoration: none !important;
 
 #NavBar ul li a:hover{text-decoration: underline;}
 
-#NavBar form{position:absolute; top:31px; right: 54px;font-size:12px;}
+#NavBar form{position:absolute; top:31px; right: 35px;font-size:12px;}
 #NavBar form input {width: 145px; border: medium none;}
 #NavBar form label{display: none;}
 
