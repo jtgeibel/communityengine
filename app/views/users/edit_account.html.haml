@@ -15,11 +15,11 @@
     %h3=:password.l
     = password_field :user, :password, :size => "28"
 
-    %label=:confirm_password.l
+    %h3=:confirm_password.l
     = password_field :user, :password_confirmation, :size => "28"
 
   #yui-main
-    -box :class => "yui-b" do
+    -box :class => "yui-b alt" do
       %h3=:e_mail_notification.l
 
       %fieldset
@@ -35,7 +35,7 @@
           = check_box :user, :notify_community_news
           =:notify_email_updates.l :site => AppConfig.community_name
           
-
+    -box :class => "yui-b alt" do
       %h3=:profile_privacy.l
 
       %fieldset

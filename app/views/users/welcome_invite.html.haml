@@ -5,7 +5,7 @@
   %p
     =:invite_message.l(:site=> AppConfig.community_name)
   %p=:people_who_sign_up_using_your_invitation_will_automatically_be_added_as_your_friends.l
-    
+  = link_to "&raquo; "+ :skip_this_and_go_to_your_profile.l, user_path(@user)
   - form_for(:invitation, :url => user_invitations_path(:user_id => @user.id), :html => {:class => "MainForm"} ) do |f|
     %label{"for"=>"email_addresses"} 
       =:enter_e_mail_addresses.l
