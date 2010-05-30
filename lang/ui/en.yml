@@ -560,7 +560,7 @@ en:
   #en: get_popular: Get popular.
   get_popular: Get popular.
   #en: get_started: "Get started:"
-  get_started: "Get started:"
+  get_started: "Get Started"
   #en: get_started_banner: Get started with <a href="/">{{site}}</a> today!
   get_started_banner: "Get started with <a href='/'>{{site}}</a> today!"
   #en: invite_some_friends: "Invite some friends!"
