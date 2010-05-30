@@ -121,7 +121,7 @@ position:relative;
 #hd h2 div a {padding: 0 10px; background: white;}
 #hd h2 a#user-menu {font-weight:normal; padding-right:20px;}
 
-#hd h2#newmail{
+#newmail {
 float: right;
 padding-left: 20px;
 margin-right: 20px;
@@ -129,17 +129,19 @@ background-color: transparent;
 background-image: url(/plugin_assets/community_engine/images/icons/email_open.png);
 background-repeat: no-repeat;
 background-position: left center;
+margin-top: 6px;
+font-size:120%;
 }
 
-#NavBar, #hd h2, #user-menu-tip, #bd h2, #bd a, #bd h3 {font-family:Georgia,Times,"Times New Roman",FreeSerif,serif;}
-#NavBar li a, #hd h2 a, #user-menu-tip a {text-decoration:none; color:black;}
+#NavBar, #hd h2, #hd h3, #user-menu-tip, #bd h2, #bd a, #bd h3 {font-family:Georgia,Times,"Times New Roman",FreeSerif,serif;}
+#NavBar li a, #hd a, #user-menu-tip a {text-decoration:none; color:black;}
 
 /* Navbar */
 
 #NavBar {position:absolute; top:47px; font-size:138.5%; text-transform:uppercase; list-style:none;width:100%;}
 
 #NavBar li {float:left; padding-left:17px;}
-#NavBar ul {float: left; margin-left: 235px;}
+#NavBar ul {float: left; margin-left: 220px;}
 
 #NavBar ul li#active a, #NavBar ul li.current a{
 text-decoration: none !important;
@@ -254,7 +256,6 @@ padding-left: 30px;
 
 #bd li {margin:5px 0;}
 #bd .entry-content ul, #bd .entry-content ol {margin: 20px 0 20px 30px;}
-#bd p {margin:5px 0;}
 
 a {font-size:110.8%; color:#c5ae0c; font-weight:normal;}
 #bd img {border:1px solid #c0bfbf; padding:2px;}
@@ -754,7 +755,6 @@ min-height: 16px;
 	
 /*USER PROFILE*/
 #profile_details {
-font-size: 92.2%;
 float: right;
 }
 

@@ -18,7 +18,7 @@
   -box :id => 'friends' do
     %h3
       =:my_friends.l
-      = link_to "(#{@friend_count})", accepted_user_friendships_path(@user) if @friend_count > 6
+      = '(' + @friend_count.to_s + ')'
       .plus= link_to "#{:invite_a_friend.l :site => AppConfig.community_name}", invite_user_path(@user) if @is_current_user
     %div= link_to "&raquo; #{:view_all_my_friend_requests.l} (#{@pending_friendships_count})", pending_user_friendships_path(@user) if @is_current_user
     - @accepted_friendships.each do |user|
