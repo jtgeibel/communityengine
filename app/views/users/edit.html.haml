@@ -13,38 +13,38 @@
       = image_tag( @user.avatar_photo_url(:medium), :class => "polaroid" )
       %label
         =:choose_a_photo_for_your_profile.l
-      = file_field :avatar, :uploaded_data, :size => "20"
-      
-      %h3= :location.l
-      = render :partial => 'shared/location_chooser', :locals => {:selected_county => @user.county_id, :selected_neighborhood => @user.neighborhood_id, :neighborhoods => @neighborhoods}
+      = file_field :avatar, :uploaded_data, :size => "15"
+      -box do
+        %h3= :location.l
+        = render :partial => 'shared/location_chooser', :locals => {:selected_county => @user.county_id, :selected_neighborhood => @user.neighborhood_id, :neighborhoods => @neighborhoods}
 
-      %label
-        =:zippostal_code.l
-      = text_field :user, :zip, :style=>"width:90px"
-
-      %h3=:birthday_gender.l
-      %fieldset
-        %legend
-          =:gender.l
         %label
-          = radio_button :user, :gender, User::MALE
-          =:male.l
-        %label
-          = radio_button :user, :gender, User::FEMALE
-          =:female.l
+          =:zippostal_code.l
+        = text_field :user, :zip, :style=>"width:90px"
+      -box do
+        %h3=:birthday_gender.l
+        %fieldset
+          %legend
+            =:gender.l
+          %label
+            = radio_button :user, :gender, User::MALE
+            =:male.l
+          %label
+            = radio_button :user, :gender, User::FEMALE
+            =:female.l
 
-      %label
-        =:birthday.l
-        \:
-      = date_select :user, :birthday, {:start_year => 1926, :end_year => Time.now.year - 1}
+        %label
+          =:birthday.l
+          \:
+        = date_select :user, :birthday, {:start_year => 1926, :end_year => Time.now.year - 1}
       
   #yui-main
     .yui-b
       -box do 
         %h3=:about_me.l
-        = text_area :user, :description, :class => "rich_text_editor", :style => "width:100%"
+        = text_area :user, :description, :class => "rich_text_editor"
         
-      -box :class => "alt" do 
+      -box do 
         =:tips.l
         = render :partial => 'shared/bio_help'
         =:feel_free_to_embed_images_or_videos.l

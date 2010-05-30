@@ -1,14 +1,14 @@
 %span#location_chooser
   = "County:"
   %br
-  = select_tag(:county_id, '<option></option>'+options_from_collection_for_select(County.find(:all), "id", "name", selected_county), {:style => "width:150px"})
+  = select_tag(:county_id, '<option></option>'+options_from_collection_for_select(County.find(:all), "id", "name", selected_county), {:style => "width:200px"})
 
   %br
   = "Neighborhood:"
   %br
   - if neighborhoods.length == 1
     - selected_neighborhood = County.find(selected_county).neighborhoods[0].id
-  = select_tag(:neighborhood_id, '<option></option>' + options_from_collection_for_select(neighborhoods, "id", "name", (selected_neighborhood rescue nil)), {:style => "width:150px", :disabled =>  neighborhoods.empty?})
+  = select_tag(:neighborhood_id, '<option></option>' + options_from_collection_for_select(neighborhoods, "id", "name", (selected_neighborhood rescue nil)), {:style => "width:200px", :disabled =>  neighborhoods.empty?})
 
   = image_tag 'spinner.gif', :plugin => 'community_engine', :style => 'display:none;'
 
