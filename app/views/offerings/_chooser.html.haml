@@ -2,7 +2,7 @@
 - @skills = Skill.find(:all) - @user_skills
 
 -box :class => "yui-g" do
-  %h3= :my_skills
+  %h3= :my_skills.l
   .yui-u.first
     %ul#skills.sortable
       - @skills.each do |s|
