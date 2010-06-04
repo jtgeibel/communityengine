@@ -10,7 +10,7 @@
       %h3=:upcoming_events.l
       %iframe{:src => "http://www.google.com/calendar/embed?title=Upcoming%20Events&amp;showTitle=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;mode=AGENDA&amp;height=180&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=l11c2rg6hr0shrepi3dad74ibk%40group.calendar.google.com&amp;color=%23AB8B00&amp;ctz=America%2FNew_York", :style => "border-width:0;", :width=>537, :height=>180, :frameborder=>0, :scrolling=>"no"}
     -unless logged_in?
-      -box :class => "alt" do
+      -box :class => "alt", :id => "welcome" do
         =render :partial => 'base/intro'
     -box :class => "hfeed alt" do 
       %h3
