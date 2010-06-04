@@ -1,6 +1,7 @@
 class EventsController < BaseController
 
   require 'htmlentities'
+  require 'ri_cal'
   caches_page :ical
   cache_sweeper :event_sweeper, :only => [:create, :update, :destroy]
  
