@@ -760,6 +760,7 @@ min-height: 16px;
 /*USER PROFILE*/
 #profile_details {
 float: right;
+max-width: 300px;
 }
 
 /* CATEGORY PAGES */
