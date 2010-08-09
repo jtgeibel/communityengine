@@ -138,6 +138,8 @@ class BaseController < ApplicationController
       @active_contest = Contest.get_active
       @popular_posts = Post.find_popular({:limit => 10})    
       @popular_polls = Poll.find_popular(:limit => 8)
+
+      @recent_photos = Photo.new_this_month.find(:all, :limit => 6)
     end
 
 
