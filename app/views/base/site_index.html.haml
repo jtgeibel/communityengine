@@ -21,6 +21,12 @@
   -unless logged_in?
     =render :partial => 'base/signup_button'
 
+  -if @recent_photos.count > 0
+    -box :class => "alt" do
+      %h3= "Recent Photos"
+      -@recent_photos.each do |photo|
+        = link_to image_tag( photo.public_filename(:thumb), :class => "polaroid"), user_photo_path(photo.user, photo)
+
   -if @popular_posts.count > 0
     -box :class => "alt" do 
       %h3= :whats_hot.l
