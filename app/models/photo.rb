@@ -36,6 +36,7 @@ class Photo < ActiveRecord::Base
   #Named scopes
   named_scope :recent, :order => "photos.created_at DESC", :conditions => ["photos.parent_id IS NULL"]
   named_scope :new_this_week, :order => "photos.created_at DESC", :conditions => ["photos.created_at > ? AND photos.parent_id IS NULL", 7.days.ago.to_s(:db)]
+  named_scope :new_this_month, :order => "photos.created_at DESC", :conditions => ["photos.created_at > ? AND photos.parent_id IS NULL", 31.days.ago.to_s(:db)]
   named_scope :tagged_with, lambda {|tag_name|
     {:conditions => ["tags.name = ?", tag_name], :include => :tags}
   }
