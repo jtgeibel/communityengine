@@ -69,7 +69,6 @@ recent_rss '/recent.rss', :controller => 'posts', :action => 'recent', :format =
 rss_redirect '/rss', :controller => 'base', :action => 'rss_site_index'
 rss '/site_index.rss', :controller => 'base', :action => 'site_index', :format => 'rss'
 
-advertise '/advertise', :controller => 'base', :action => 'advertise'
 css_help '/css_help', :controller => 'base', :action => 'css_help'  
 about '/about', :controller => 'base', :action => 'about'
 faq '/faq', :controller => 'base', :action => 'faq'
