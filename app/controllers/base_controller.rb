@@ -61,9 +61,6 @@ class BaseController < ApplicationController
     @homepage_features.shift
     render :partial => 'homepage_feature', :collection => @homepage_features and return
   end
-    
-  def advertise
-  end
   
   def css_help
   end
