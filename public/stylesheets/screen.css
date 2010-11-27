@@ -263,6 +263,7 @@ padding-left: 30px;
 
 a {font-size:110.8%; color:#c5ae0c; font-weight:normal;}
 #bd img {border:1px solid #c0bfbf; padding:2px;}
+#bd .forum img {border:0; padding: 0;}
 
 .hentry {margin-bottom: 1.538em;}
 .hentry h4 {margin-bottom:10px;}
@@ -975,3 +976,4 @@ width:371px;
 clear:none;
 }
 #comments .entry-content {background:#f0f0ee; -moz-border-radius:10px; -webkit-border-radius:10px; padding:7px;}
+
