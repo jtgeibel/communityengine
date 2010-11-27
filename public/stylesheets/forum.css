@@ -529,7 +529,7 @@ img.icon {
 	background-repeat: no-repeat;
 	vertical-align: bottom;
 	}
-img.reply { float:right; }
+img.reply { float:right; background-color: #DABD6F;}
 img.orange { background-color:darkorange; }
 img.grey { background-color:#ccc; }
 img.darkgrey { background-color:#999; }
