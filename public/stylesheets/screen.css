@@ -140,8 +140,9 @@ font-size:120%;
 
 #NavBar {position:absolute; top:47px; font-size:138.5%; text-transform:uppercase; list-style:none;width:100%;}
 
-#NavBar li {float:left; padding-left:17px;}
+#NavBar li {float:left; padding-left:14px;}
 #NavBar ul {float: left; margin-left: 220px;}
+#NavBar li.current {font-style: italic;}
 
 #NavBar ul li#active a, #NavBar ul li.current a{
 text-decoration: none !important;
