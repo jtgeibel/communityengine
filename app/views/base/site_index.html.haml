@@ -7,9 +7,9 @@
         =:upcoming_events.l
       = render :partial => 'events/event', :collection => Event.all, :locals=>{:show_details_link=>true}
     -box :class => "alt" do
-      %h3= "What we're up to"
-      %p= "Check out the #{link_to 'full list of events', 'http://www.meetup.com/PittsburghGardenExperiment/#events'} on our meetup site.  Our season-long session of low cost and member supported classes will be starting soon."
-      %p= "Also don't forget to look for the #{link_to 'Backyard Blitz', 'http://pittsburghgardenexperiment.org/pages/3-backyard-blitz'} coupon in #{link_to 'ecocents', 'http://www.ecocentspgh.com/'}!"
+      %h3= "Announcements"
+      %p= link_to image_tag('eventsbutton.png', {:size => "270x104", :alt => "Events"}), 'http://www.meetup.com/PittsburghGardenExperiment/#events'
+      %p= link_to image_tag('bblitzbutton.png', {:size => "270x104", :alt => "Backyard Blitz!"}), 'http://pittsburghgardenexperiment.org/pages/3-backyard-blitz'
     -unless logged_in?
       -box :class => "alt", :id => "welcome" do
         =render :partial => 'base/intro'
