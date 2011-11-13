@@ -1,6 +1,6 @@
-%script{"type"=>"text/javascript", "src"=>"http://www.plaxo.com/css/m/js/util.js"}
-%script{"type"=>"text/javascript", "src"=>"http://www.plaxo.com/css/m/js/basic.js"}
-%script{"type"=>"text/javascript", "src"=>"http://www.plaxo.com/css/m/js/abc_launcher.js"}
+%script{"type"=>"text/javascript", "src"=>"https://www.plaxo.com/css/m/js/util.js"}
+%script{"type"=>"text/javascript", "src"=>"https://www.plaxo.com/css/m/js/basic.js"}
+%script{"type"=>"text/javascript", "src"=>"https://www.plaxo.com/css/m/js/abc_launcher.js"}
 
 - @section = (@post.category && @post.category.name)
 - @meta = { :title => "#{@post.title}", :description => "#{truncate_words(@post.post, 75, '...' )}", :keywords => "#{@post.tags.join(", ") unless @post.tags.nil?}", :robots => AppConfig.robots_meta_show_content }
@@ -25,7 +25,7 @@
             %li.email
               %a{:href=>"#", :onclick=>"showSendTo_friend(); return false;", :title=>:email_this_story_to_friends.l}= :email_to_friends.l
             %li.share
-              %script{:type=>"text/javascript", :src=>"http://w.sharethis.com/widget/?tabs=web&amp;charset=utf-8&amp;style=default&amp;publisher=4488bdef-d776-4c80-93e1-ac1fb8359971&amp;linkfg=%23131358&amp;button=false"}
+              %script{:type=>"text/javascript", :src=>"https://ws.sharethis.com/widget/?tabs=web&amp;charset=utf-8&amp;style=default&amp;publisher=4488bdef-d776-4c80-93e1-ac1fb8359971&amp;linkfg=%23131358&amp;button=false"}
               =sharethis_options(@post)
             -if @is_current_user || admin? || moderator?
               %li.edit= link_to :edit.l, edit_user_post_path(@post.user, @post)
