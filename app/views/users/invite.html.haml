@@ -1,6 +1,6 @@
-%script{"type"=>"text/javascript", "src"=>"http://www.plaxo.com/css/m/js/util.js"}
-%script{"type"=>"text/javascript", "src"=>"http://www.plaxo.com/css/m/js/basic.js"}
-%script{"type"=>"text/javascript", "src"=>"http://www.plaxo.com/css/m/js/abc_launcher.js"}
+%script{"type"=>"text/javascript", "src"=>"https://www.plaxo.com/css/m/js/util.js"}
+%script{"type"=>"text/javascript", "src"=>"https://www.plaxo.com/css/m/js/basic.js"}
+%script{"type"=>"text/javascript", "src"=>"https://www.plaxo.com/css/m/js/abc_launcher.js"}
 
 .yui-b
   -box :class => "alt first_alt" do 
@@ -17,7 +17,7 @@
       - form_for(:invitation, :url => user_invitations_path(:user_id => @user.id ), :html => {:class => "MainForm"} ) do |f|
         .right
           %a{"href"=>"#", "onclick"=>"showPlaxoABChooser('invitation_email_addresses', '/base/plaxo'); return false;"}
-            %img{"src"=>"http://www.plaxo.com/images/abc/buttons/add_button.gif", "alt"=>:add_from_my_address_book.l}/
+            %img{"src"=>"https://www.plaxo.com/images/abc/buttons/add_button.gif", "alt"=>:add_from_my_address_book.l}/
         %label{"for"=>"email_addresses"} 
           =:enter_e_mail_addresses.l 
           %em= :comma_separated.l
