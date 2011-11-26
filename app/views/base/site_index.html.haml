@@ -9,7 +9,7 @@
     -box :class => "alt" do
       %h3= "Announcements"
       %p= link_to image_tag('eventsbutton.png', {:size => "270x104", :alt => "Events"}), 'http://www.meetup.com/PittsburghGardenExperiment/#events'
-      %p= link_to image_tag('bblitzbutton.png', {:size => "270x104", :alt => "Backyard Blitz!"}), 'http://pittsburghgardenexperiment.org/pages/3-backyard-blitz'
+      %p= link_to image_tag('bblitzbutton.png', {:size => "270x104", :alt => "Backyard Blitz!"}), 'https://pittsburghgardenexperiment.org/pages/3-backyard-blitz'
     -unless logged_in?
       -box :class => "alt", :id => "welcome" do
         =render :partial => 'base/intro'
