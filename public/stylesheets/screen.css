@@ -253,6 +253,32 @@ margin-left: -30px;
 .alt{
 padding-left: 30px;
 }
+.page-content, .event-content{
+margin-left: 0px; /* Use formatting for blog post except for left margin */
+}
+
+.event-edit-link{
+float: right;
+}
+
+/*.hentry .vcard h5{
+float: left;
+width: 66px;
+}
+
+.hentry .vcard h5 a img{
+display: block;
+border: 1px solid #a2a19b;
+padding: 2px;
+background: #fff;
+}
+
+.hentry .vcard h5 a:hover img{background: #a2a19b; }
+
+.hentry .vcard ul{
+margin-left: 66px;
+font-size: 85%;
+}*/
 
 
 /* =============================================== */

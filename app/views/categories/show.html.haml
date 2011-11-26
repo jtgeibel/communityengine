@@ -14,9 +14,8 @@
             %small
               =:have_an_account.l
               %a{:href=>login_url, :title=>:log_in_to_your.l+" #{AppConfig.community_name} "+:account.l}="&raquo; " + :login.l
-
-  -box :class => "alt" do 
-    -if @active_users.count > 0
+  -if @active_users.count > 0
+    -box :class => "alt" do 
       %h3=:top_writers.l
       - @active_users.each do |user|
         = render :partial => "users/sidebar_user", :locals => {:user => user}
@@ -26,7 +25,6 @@
       %ul.list.page    
         - @popular_posts.each do |post|
           =render :partial => 'posts/sidebar_post', :locals => {:post => post}
-
 
 #yui-main
   .yui-b

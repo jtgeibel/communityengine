@@ -44,9 +44,6 @@
     %h6.all
       %a{:href=>users_url} See More
 
-  -box :class => "alt" do 
-    %h3
-      =:featured_writer.l
   -box :class => "alt" do
     %h3=:tags.l
     - tag_cloud @popular_tags, %w(nube1 nube2 nube3 nube4 nube5) do |name, css_class|
