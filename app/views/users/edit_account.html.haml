@@ -46,6 +46,10 @@
           %br
           %em
             =:when_checked_your_profile_will_be_visible_to_anyone.l
-          %br
-          %label
-            %em= :deactivate_tip.l            
+      %p= submit_tag :save_changes.l
+
+      %p
+        =link_to :deactivate_link.l, deactivate_user_path(@user), :method => :put, :confirm => :deactivate_confirmation.l
+        %br
+        %label
+          %em= :deactivate_tip.l            
