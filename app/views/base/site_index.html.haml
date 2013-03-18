@@ -6,9 +6,8 @@
       %h3
         =:upcoming_events.l
       = render :partial => 'events/event', :collection => Event.all, :locals=>{:show_details_link=>true}
-    -unless logged_in?
-      -box :class => "alt", :id => "welcome" do
-        =render :partial => 'base/intro'
+    -box :class => "alt", :id => "welcome" do
+      =render :partial => 'base/intro'
     -box :class => "hfeed alt" do 
       %h3
         =:recent_posts.l
